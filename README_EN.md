@@ -1,7 +1,8 @@
+
 # ustcmb --- Mathematical Report Template
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-2.2.7-green.svg)](https://github.com/vanabel/mathbeamer)
+[![Version](https://img.shields.io/badge/Version-v2.2.8-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
@@ -67,50 +68,46 @@ Content...
 \end{frame}
 
 \end{document}
-```
+````
 
 ## ⚙️ Configuration Options
 
 ### Core Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `zh` | Enable Chinese support | Enabled |
-| `en` | English mode | Disabled |
-| `thmnum` | Numbered theorems | Disabled |
+| Option     | Description                 | Default  |
+| ---------- | --------------------------- | -------- |
+| `zh`       | Enable Chinese support      | Enabled  |
+| `en`       | English mode                | Disabled |
+| `thmnum`   | Numbered theorems           | Disabled |
 | `eqsecnum` | Number equations by section | Disabled |
 
 ### Bibliography Options
 
-| Option | Description | Dependency |
-|--------|-------------|------------|
-| `authoryear` | Author-year citation style (amsrefs) | amsrefs |
-| `allcites` | Output all references in bib.bib | amsrefs |
-| `biblatex` | Use modern biblatex package | biblatex |
-| `citemath` | Mathematical paper citation style | biblatex + xstring |
+| Option       | Description                          | Dependency         |
+| ------------ | ------------------------------------ | ------------------ |
+| `authoryear` | Author-year citation style (amsrefs) | amsrefs            |
+| `allcites`   | Output all references in bib.bib     | amsrefs            |
+| `biblatex`   | Use modern biblatex package          | biblatex           |
+| `citemath`   | Mathematical paper citation style    | biblatex + xstring |
 
 ### Advanced Options
 
-| Option | Description |
-|--------|-------------|
-| `nds` | Do not use default settings (requires manual configuration) |
-| `subnav` | Display navigation at each subsection |
-| `nobib` | Disable bibliography processing |
+| Option   | Description                                                 |
+| -------- | ----------------------------------------------------------- |
+| `nds`    | Do not use default settings (requires manual configuration) |
+| `subnav` | Display navigation at each subsection                       |
+| `nobib`  | Disable bibliography processing                             |
 
 ## 📚 Example Files
 
-The project contains multiple example files to help you get started quickly:
-
-- `ustcmb-main.tex` - Main example file
-- `biblatex-example.tex` - biblatex usage example
-- `amsrefs-example.tex` - amsrefs usage example
-- `math-citation-example.tex` - Mathematical citation example
+* `ustcmb-main.tex` - Main example file
+* `biblatex-example.tex` - biblatex usage example
+* `amsrefs-example.tex` - amsrefs usage example
+* `math-citation-example.tex` - Mathematical citation example
 
 ## 🔧 Custom Configuration
 
 ### Required Configuration When Using nds Option
-
-When using the `nds` option, you need to manually configure the following:
 
 ```latex
 \documentclass[nds]{ustcmb}
@@ -126,8 +123,6 @@ When using the `nds` option, you need to manually configure the following:
 ```
 
 ### Font Configuration
-
-The template supports custom Chinese fonts:
 
 ```latex
 \setCJKmainfont{YourChineseFont}
@@ -148,8 +143,8 @@ This project is licensed under [LaTeX Project Public License v1.3c](http://www.l
 
 **Van Abel** - [van141.abel@gmail.com](mailto:van141.abel@gmail.com)
 
-- Project Homepage: [https://github.com/vanabel/mathbeamer](https://github.com/vanabel/mathbeamer)
-- License: [LPPL v1.3c](http://www.latex-project.org/lppl.txt)
+* Project Homepage: [https://github.com/vanabel/mathbeamer](https://github.com/vanabel/mathbeamer)
+* License: [LPPL v1.3c](http://www.latex-project.org/lppl.txt)
 
 ---
 
