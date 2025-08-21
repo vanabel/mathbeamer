@@ -45,7 +45,7 @@
 
 ### Download and Install
 
-1. Download the template package: [ustcmb-v2.2.7.zip](https://github.com/vanabel/mathbeamer/releases/latest)
+1. Download the template package: [ustcmb-v2.2.8.zip](https://github.com/vanabel/mathbeamer/releases/latest)
 2. After extraction, read the example file `ustcmb-main.pdf`
 3. Refer to `ustcmb-main.tex` to start writing your report
 
