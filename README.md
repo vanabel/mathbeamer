@@ -19,11 +19,11 @@
 ## 📊 项目统计
 
 ### 星标趋势
-[![Stargazers over time](https://starchart.cc/vanabel/math-beamer.svg?variant=adaptive)](https://starchart.cc/vanabel/math-beamer)
+[![Stargazers over time](https://starchart.cc/vanabel/mathbeamer.svg?variant=adaptive)](https://starchart.cc/vanabel/mathbeamer)
 
 ### 贡献统计
 [![GitHub stars](https://img.shields.io/github/stars/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
-[![GitHub forks](https://img.shields.io/github/forks/vanabel/math-beamer?style=social)](https://github.com/vanabel/mathbeamer)
+[![GitHub forks](https://img.shields.io/github/forks/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
 [![GitHub issues](https://img.shields.io/github/issues/vanabel/mathbeamer)](https://github.com/vanabel/mathbeamer)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/vanabel/mathbeamer)](https://github.com/vanabel/mathbeamer)
 
@@ -44,7 +44,7 @@
 
 ### 下载安装
 
-1. 下载模板压缩包：[ustcmb-v2.2.3.zip](https://git.ustclug.org/vanabel/math-beamer/blob/master/ustcmb-v2.2.3.zip)
+1. 下载模板压缩包：[ustcmb-v2.2.3.zip](https://github.com/vanabel/mathbeamer/blob/main/ustcmb-v2.2.3.zip)
 2. 解压后阅读示例文件 `ustcmb-main.pdf`
 3. 参考 `ustcmb-main.tex` 开始编写您的报告
 

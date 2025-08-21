@@ -201,6 +201,6 @@ uninstall:
 
 # Git相关操作（保留原有功能）
 git : zip
-	cp -r logo/{univ,institute}_logo.png logo/ustc logo/sjtu math-beamer/logo/
+	cp -r logo/{univ,institute}_logo.png logo/ustc logo/sjtu mathbeamer/logo/
 	cp -r figs/winfonts.png $(NAME)-$(VER)/figs
-	cp $(NAME).dtx Makefile .latexmkrc $(NAME)-$(VER).zip math-beamer/
+	cp $(NAME).dtx Makefile .latexmkrc $(NAME)-$(VER).zip mathbeamer/

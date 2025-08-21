@@ -18,7 +18,7 @@
 ## 📊 Project Statistics
 
 ### Stargazers over time
-[![Stargazers over time](https://starchart.cc/vanabel/math-beamer.svg?variant=adaptive)](https://starchart.cc/vanabel/math-beamer)
+[![Stargazers over time](https://starchart.cc/vanabel/mathbeamer.svg?variant=adaptive)](https://starchart.cc/vanabel/mathbeamer)
 
 ### Contribution Statistics
 [![GitHub stars](https://img.shields.io/github/stars/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
@@ -43,7 +43,7 @@
 
 ### Download and Install
 
-1. Download the template package: [ustcmb-v2.2.3.zip](https://git.ustclug.org/vanabel/math-beamer/blob/master/ustcmb-v2.2.3.zip)
+1. Download the template package: [ustcmb-v2.2.3.zip](https://github.com/vanabel/mathbeamer/blob/main/ustcmb-v2.2.3.zip)
 2. After extraction, read the example file `ustcmb-main.pdf`
 3. Refer to `ustcmb-main.tex` to start writing your report
 
