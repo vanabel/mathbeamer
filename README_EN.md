@@ -177,7 +177,7 @@ The template supports custom Chinese fonts:
 ### [v2.0.0]
 
 - 🔧 Used dtx to manage documentation
-- 🗑️ Removed xeCJK font settings (should be configured by user)
+- ✅ Migrated to ctex package for automatic Chinese font handling
 
 ### [v1.2.0]
 

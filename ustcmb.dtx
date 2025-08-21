@@ -527,7 +527,7 @@ CTEX.ORG.
 % \begin{table}[htbp]
 %   \begin{tabular}{|l|p{.75\textwidth}|}
 %     \hline
-%     \opt{zh} & 中文支持(xeCJK) \\
+%     \opt{zh} & 中文支持(ctex) \\
 %     \hline
 %     \opt{logo} & 使用学校以及学院Logo \\
 %     \hline
@@ -587,7 +587,7 @@ CTEX.ORG.
 % \section{使用手册}
 % 这节主要讲一讲支持的选项. 
 % \subsection{中文支持}
-% 中文采用的是 \pkg{xeCJK} 方案, 使用时只需添加 \opt{zh} 选项即可.
+% 中文采用的是 \pkg{ctex} 方案, 使用时只需添加 \opt{zh} 选项即可.
 % 
 % 需要注意的是, 默认状态下\texttt{并没有配置任何中文字体}. 
 % 故可能产生以下问题:
@@ -855,11 +855,9 @@ CTEX.ORG.
 %    \begin{macrocode}
 \ifMB@zh
 %    \end{macrocode}
-% xecjk 字体引擎
+% ctex 中文支持引擎
 %    \begin{macrocode}
-\RequirePackage{fontspec}
-\RequirePackage{xunicode,xltxtra}
-\RequirePackage[slantfont, boldfont, LocalConfig]{xeCJK}
+\RequirePackage{ctex}
 %    \end{macrocode}
 %% 中文模式下字体配置, 主要更改了标题(title)/帧标题(frametitle)/正文(normal text). 其他结构的修改可以参考\href{http://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf}{Beamer appearance cheat sheet}.
 %    \begin{macrocode}
@@ -920,6 +918,14 @@ CTEX.ORG.
     \renewcommand*{\compcitedelim}{\addcomma\space}
     % 在作者和年份之间添加逗号和空格
     \renewcommand*{\nameyeardelim}{\addcomma\space}
+    
+    % 确保引用有方括号
+    \DeclareCiteCommand{\cite}[\mkbibparens]
+      {\usebibmacro{prenote}}
+      {\usebibmacro{citeindex}%
+       \usebibmacro{cite}}
+      {\multicitedelim}
+      {\usebibmacro{postnote}}
     
     % 设置字段格式（类似amsrefs风格）
     \DeclareFieldFormat{title}{\emph{#1}}
@@ -1313,7 +1319,7 @@ CTEX.ORG.
     \begin{tabular}{|l|p{.75\textwidth}|}
       \hline
       % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-      zh & 中文支持(xeCJK) \\
+      zh & 中文支持(ctex) \\
       \hline
       logo & 使用学校以及学院Logo \\
       \hline
@@ -1339,7 +1345,7 @@ CTEX.ORG.
 \section{模板使用详解}
 \subsection{中文支持}
 \begin{frame}[t, fragile]{中文支持}
-  中文采用的是xeCJK方案, 使用时只需要添加\lstinline|zh|选项即可. 
+  中文采用的是ctex方案, 使用时只需要添加\lstinline|zh|选项即可. 
   即使用
   \begin{lstlisting}
   \documentclass[zh]{mathbeamer}
@@ -1528,13 +1534,9 @@ CTEX.ORG.
   \newtheorem{cexmp}{例子}
   \newtheorem*{rmk}{Remark}
   \newtheorem*{crmk}{注记}
-%% xeCJK 设置
-  \xeCJKsetup{
-    PunctStyle=kaiming,
-    CJKmath=true,
-    CheckSingle=true,
-    PlainEquation=true
-  }
+%% ctex 中文设置
+  % ctex会自动根据系统选择合适的字体
+  % 支持中文标点符号、数学公式等
 
 %%Define font family
 %% find your system fonts by:
