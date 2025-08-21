@@ -27,6 +27,11 @@ fi
 echo "开始发布版本: $VERSION"
 echo ""
 
+# 清理工作目录
+echo "🧹 清理工作目录..."
+make distclean 2>/dev/null || true
+rm -f ustcmb-*.zip 2>/dev/null || true
+
 # 检查是否有未提交的更改
 if [ -n "$(git status --porcelain)" ]; then
     echo "警告: 有未提交的更改"

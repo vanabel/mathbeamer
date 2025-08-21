@@ -272,3 +272,6 @@ ustcmb.pdf
 
 # Keep examples directory content
 !examples/
+
+# Ignore .latexmkrc in examples directory (but keep root .latexmkrc)
+examples/.latexmkrc
