@@ -55,10 +55,11 @@ echo "  - 更新Makefile中的版本号..."
 sed "s/VER= v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/VER= $VERSION/" Makefile > Makefile.bak
 mv Makefile.bak Makefile
 
+# 更新日期和版本号的自动更新
 # 更新DTX文件中的版本号
 echo "  - 更新DTX文件中的版本号..."
 # 更新\ProvidesClass行中的版本号
-sed "s/\\ProvidesClass{ustcmb}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{ustcmb}[2025\/08\/21 $VERSION/g" ustcmb.dtx > ustcmb.dtx.bak
+sed "s/\\ProvidesClass{ustcmb}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{ustcmb}[$(date +%Y\/%m\/%d) $VERSION/g" ustcmb.dtx > ustcmb.dtx.bak
 mv ustcmb.dtx.bak ustcmb.dtx
 
 # 更新DTX文件中的其他版本号位置
@@ -66,8 +67,8 @@ echo "  - 更新DTX文件中的其他版本号位置..."
 # 更新版本号行
 sed "s/版本号: v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/版本号: $VERSION/g" ustcmb.dtx > ustcmb.dtx.bak
 mv ustcmb.dtx.bak ustcmb.dtx
-# 更新类文件描述行
-sed "s/\[2025\/08\/21 v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]* 中科大数学报告模板类文件\]/\[2025\/08\/21 $VERSION 中科大数学报告模板类文件\]/g" ustcmb.dtx > ustcmb.dtx.bak
+# 更新类文件描述行（同时更新日期和版本号）
+sed "s/\[[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9] v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]* 中科大数学报告模板类文件\]/\[$(date +%Y\/%m\/%d) $VERSION 中科大数学报告模板类文件\]/g" ustcmb.dtx > ustcmb.dtx.bak
 mv ustcmb.dtx.bak ustcmb.dtx
 
 
