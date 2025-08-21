@@ -243,3 +243,23 @@ TSWLatexianTemp*
 session.vim
 gsession.vim
 tags
+
+## Project-specific rules:
+# Keep only source files in root directory
+!*.md
+!*.dtx
+!Makefile
+!LICENSE
+!.latexmkrc
+
+# Remove all generated LaTeX files from root
+ustcmb.cls
+ustcmb.cfg
+ustcmb.hd
+ustcmb.ins
+ustcmb-main.*
+beamercolorthemeustc.sty
+ustcmb.pdf
+
+# Keep examples directory content
+!examples/

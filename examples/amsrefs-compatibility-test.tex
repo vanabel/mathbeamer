@@ -1,0 +1,43 @@
+\documentclass[biblatex]{ustcmb}
+
+\title{amsrefs兼容性测试}
+\author{测试用户}
+\institute{测试机构}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{amsrefs兼容性测试}
+
+这个文件测试amsrefs语法在biblatex模式下的兼容性。
+
+\begin{itemize}
+\item \textbf{标准引用}: \cite{EellsSampson1964Harmonic}
+\item \textbf{带注释的引用}: \cite{EellsSampson1964Harmonic}[p.~123]
+\item \textbf{amsrefs风格引用}: \cite{EellsSampson1964Harmonic}*{p.~123}
+\item \textbf{带注释的引用*}: \cite*{EellsSampson1964Harmonic}[p.~123]
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{更多测试}
+
+\begin{itemize}
+\item \textbf{多个引用}: \cite{EellsSampson1964Harmonic,AtiyahBott1983Yang}
+\item \textbf{带注释的多个引用}: \cite{EellsSampson1964Harmonic,AtiyahBott1983Yang}[p.~123]
+\item \textbf{amsrefs风格多个引用}: \cite{EellsSampson1964Harmonic,AtiyahBott1983Yang}*{p.~123}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{参考文献}
+
+\printbibliography
+
+\end{frame}
+
+\end{document}
