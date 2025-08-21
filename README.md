@@ -2,7 +2,7 @@
 # ustcmb --- 数学类报告模板
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-v2.2.3-green.svg)](https://github.com/vanabel/mathbeamer)
+[![Version](https://img.shields.io/badge/Version-v2.2.4-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
@@ -44,7 +44,7 @@
 
 ### 下载安装
 
-1. 下载模板压缩包：[ustcmb-v2.2.3.zip](https://github.com/vanabel/mathbeamer/blob/main/ustcmb-v2.2.3.zip)
+1. 下载模板压缩包：[ustcmb-v2.2.4.zip](https://github.com/vanabel/mathbeamer/releases/latest)
 2. 解压后阅读示例文件 `ustcmb-main.pdf`
 3. 参考 `ustcmb-main.tex` 开始编写您的报告
 
@@ -137,7 +137,7 @@
 
 ## 📋 版本历史
 
-### [v2.2.4] (开发中)
+### [v2.2.4]
 
 - ✨ 新增 `biblatex` 选项，支持现代参考文献处理
 - ✨ 新增多种引用样式选项

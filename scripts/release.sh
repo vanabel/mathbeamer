@@ -40,18 +40,54 @@ if git tag -l | grep -q "^$VERSION$"; then
     exit 1
 fi
 
+# 提取版本号部分（去掉v前缀）
+VERSION_NUM=$(echo $VERSION | sed 's/^v//')
+
+echo "更新文件中的版本信息..."
+
 # 更新Makefile中的版本号
-echo "更新Makefile中的版本号..."
+echo "  - 更新Makefile中的版本号..."
 sed -i.bak "s/VER= v[0-9]\+\.[0-9]\+\.[0-9]\+/VER= $VERSION/" Makefile
 rm Makefile.bak
 
 # 更新DTX文件中的版本号
-echo "更新DTX文件中的版本号..."
-# 提取版本号部分（去掉v前缀）
-VERSION_NUM=$(echo $VERSION | sed 's/^v//')
-# 更新DTX文件中的版本号
+echo "  - 更新DTX文件中的版本号..."
 sed -i.bak "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/v$VERSION_NUM/g" ustcmb.dtx
 rm ustcmb.dtx.bak
+
+# 更新README.md中的版本号
+echo "  - 更新README.md中的版本号..."
+sed -i.bak "s/Version-v[0-9]\+\.[0-9]\+\.[0-9]\+/Version-$VERSION_NUM/g" README.md
+rm README.md.bak
+
+# 更新README_EN.md中的版本号
+echo "  - 更新README_EN.md中的版本号..."
+sed -i.bak "s/Version-v[0-9]\+\.[0-9]\+\.[0-9]\+/Version-$VERSION_NUM/g" README_EN.md
+rm README_EN.md.bak
+
+# 更新README.md中的下载链接
+echo "  - 更新README.md中的下载链接..."
+sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION_NUM.zip/g" README.md
+rm README.md.bak
+
+# 更新README_EN.md中的下载链接
+echo "  - 更新README_EN.md中的下载链接..."
+sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION_NUM.zip/g" README_EN.md
+rm README_EN.md.bak
+
+# 更新DTX文件中的下载链接
+echo "  - 更新DTX文件中的下载链接..."
+sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION_NUM.zip/g" ustcmb.dtx
+rm ustcmb.dtx.bak
+
+# 更新版本历史中的开发中标记
+echo "  - 更新版本历史标记..."
+sed -i.bak "s/### \[$VERSION\] (开发中)/### [$VERSION]/g" README.md
+sed -i.bak "s/### \[$VERSION\] (In Development)/### [$VERSION]/g" README_EN.md
+rm README.md.bak README_EN.md.bak 2>/dev/null || true
+
+echo "版本信息更新完成！"
+echo ""
 
 # 构建完整的发布包
 echo "构建完整的发布包..."
@@ -59,7 +95,7 @@ make clean
 make zip
 
 # 检查发布包是否创建成功
-ZIP_FILE="ustcmb-$VERSION.zip"
+ZIP_FILE="ustcmb-$VERSION_NUM.zip"
 if [ ! -f "$ZIP_FILE" ]; then
     echo "错误: 发布包 $ZIP_FILE 创建失败"
     exit 1
@@ -69,8 +105,12 @@ echo "发布包创建成功: $ZIP_FILE"
 
 # 提交版本更新和发布包
 echo "提交版本更新和发布包..."
-git add Makefile ustcmb.dtx "$ZIP_FILE"
-git commit -m "发布版本 $VERSION"
+git add Makefile ustcmb.dtx README.md README_EN.md "$ZIP_FILE"
+git commit -m "发布版本 $VERSION
+
+- 更新所有文件中的版本信息到 $VERSION
+- 更新下载链接和徽章
+- 构建发布包 $ZIP_FILE"
 
 # 推送更改
 echo "推送更改到远程仓库..."

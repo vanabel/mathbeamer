@@ -2,7 +2,7 @@
 
 # ustcmb 开发辅助脚本
 # 使用方法: ./scripts/dev.sh <命令>
-# 命令: build, test, package, clean, check
+# 命令: build, test, package, clean, check, version
 
 set -e
 
