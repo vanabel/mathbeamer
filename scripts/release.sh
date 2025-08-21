@@ -67,17 +67,17 @@ rm README_EN.md.bak
 
 # 更新README.md中的下载链接
 echo "  - 更新README.md中的下载链接..."
-sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION_NUM.zip/g" README.md
+sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" README.md
 rm README.md.bak
 
 # 更新README_EN.md中的下载链接
 echo "  - 更新README_EN.md中的下载链接..."
-sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION_NUM.zip/g" README_EN.md
+sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" README_EN.md
 rm README_EN.md.bak
 
 # 更新DTX文件中的下载链接
 echo "  - 更新DTX文件中的下载链接..."
-sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION_NUM.zip/g" ustcmb.dtx
+sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" ustcmb.dtx
 rm ustcmb.dtx.bak
 
 # 更新版本历史中的开发中标记
@@ -95,7 +95,7 @@ make clean
 make zip
 
 # 检查发布包是否创建成功
-ZIP_FILE="ustcmb-$VERSION_NUM.zip"
+ZIP_FILE="ustcmb-$VERSION.zip"
 if [ ! -f "$ZIP_FILE" ]; then
     echo "错误: 发布包 $ZIP_FILE 创建失败"
     exit 1
