@@ -2,7 +2,7 @@
 # ustcmb --- 数学类报告模板
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-v2.2.4-green.svg)](https://github.com/vanabel/mathbeamer)
+[![Version](https://img.shields.io/badge/Version-v2.2.6-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 
 > 基于USTC学校主题定制的数学报告模板，支持中英文双语，提供良好的打印模式
