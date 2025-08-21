@@ -4,28 +4,8 @@
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
 [![Version](https://img.shields.io/badge/Version-v2.2.4-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
-[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
-[![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
-[![Maintenance](https://img.shields.io/badge/Maintenance-Actively%20Maintained-brightgreen.svg)](https://github.com/vanabel/mathbeamer)
-
-<div align="right">
-
-[English](README_EN.md) | [中文](README.md)
-
-</div>
 
 > 基于USTC学校主题定制的数学报告模板，支持中英文双语，提供良好的打印模式
-
-## 📊 项目统计
-
-### 星标趋势
-[![Stargazers over time](https://starchart.cc/vanabel/mathbeamer.svg?variant=adaptive)](https://starchart.cc/vanabel/mathbeamer)
-
-### 贡献统计
-[![GitHub stars](https://img.shields.io/github/stars/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
-[![GitHub forks](https://img.shields.io/github/forks/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
-[![GitHub issues](https://img.shields.io/github/issues/vanabel/mathbeamer)](https://github.com/vanabel/mathbeamer)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/vanabel/mathbeamer)](https://github.com/vanabel/mathbeamer)
 
 ## 📖 简介
 
@@ -44,7 +24,7 @@
 
 ### 下载安装
 
-1. 下载模板压缩包：[ustcmb-v2.2.4.zip](https://github.com/vanabel/mathbeamer/releases/latest)
+1. 下载模板压缩包：[ustcmb-v2.2.3.zip](https://github.com/vanabel/mathbeamer/blob/main/ustcmb-v2.2.3.zip)
 2. 解压后阅读示例文件 `ustcmb-main.pdf`
 3. 参考 `ustcmb-main.tex` 开始编写您的报告
 
@@ -100,8 +80,6 @@
 
 项目包含多个示例文件，帮助您快速上手：
 
-> 💡 **开发者说明**: 如果您需要了解GitHub Actions自动发布流程，请查看 [GitHub Actions说明文档](.github/GITHUB_ACTIONS.md)
-
 - `ustcmb-main.tex` - 主要示例文件
 - `biblatex-example.tex` - biblatex使用示例
 - `amsrefs-example.tex` - amsrefs使用示例
@@ -137,7 +115,7 @@
 
 ## 📋 版本历史
 
-### [v2.2.4]
+### [v2.2.4] (开发中)
 
 - ✨ 新增 `biblatex` 选项，支持现代参考文献处理
 - ✨ 新增多种引用样式选项
@@ -185,54 +163,53 @@
 - 🌏 新增中文支持选项，使用 `zh` 启用中文支持
 - 🎨 新增默认颜色主题，更接近USTC颜色（主色调为蓝色）
 
-### [v1.1.1]
+### [v 1.1.1]
 
-- 📖 新增更多示例幻灯片，包括：
-  * 列表中的自动暂停
-  * 单帧中的两列布局
-  * 在帧中包含图形/子图形
-  * 表格
-  * 定义/示例/定理类环境
-  * 自定义defn/examp/thm定理类环境
-  * 幻灯片之间的超链接
-- 🙏 在参考文献前添加感谢页面
-- 📝 用户定义的命令/环境应写在 `slides/usrdefn.tex` 中
+1. add more example slides, which includes
+ * auto pause in lists
+ * two columns in a frame
+ * include figure/subfigures in a frame
+ * table
+ * definition/example/theorem like environments
+ * custom defn/examp/thm theorem like environments
+ * hyperlinks between slides
+2. add thanks before the references
+3. user defined commands/environments should be written in `slides/usrdefn.tex`
 
-#### [v1.1.0]
+#### [v 1.1.0]
 
-- 🎨 新分支，添加三种颜色样式：
-  * `dark`：深色样式
-  * `light`：浅色样式
-  * 默认样式介于上述两者之间
+1. new branch, add three color style:
+ * `dark`: dark color style
+ * `light`: light color style
+ * the default is betwen the above two
 
-#### [v1.0.1]
+#### [v 1.0.1]
 
-- 🔗 添加 `slides/bib.bib` 链接，可在 `WinEdt` 中通过 `Build Tree` 打开
-- 🔤 设置数学的默认字体主题为 `\usefonttheme{professionalfonts}`，使数学公式看起来更完美
-- 📚 添加 `\newcommand{}{}` 示例和 `\newtheorem{}{}` 示例
+1. add link to `slides/bib.bib`, so that you can open it in `WinEdt` by `Build Tree`
+2. set the default font theme for math be `\usefonttheme{professionalfonts}`, which makes math formula looks more perfect
+3. add `\newcommand{}{}` example and `\newtheorem{}{}` example
 
-## 🤝 贡献
+### Copyright and Licence
 
-欢迎提交Issue和Pull Request来改进这个模板！
+Copyright (C) 2016 by Van Abel <van141.abel@gmail.com>
 
-## 📄 许可证
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
 
-本项目采用 [LaTeX Project Public License v1.3c](http://www.latex-project.org/lppl.txt) 或更高版本。
+http://www.latex-project.org/lppl.txt
 
-## 👨‍💻 作者
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
 
-**Van Abel** - [van141.abel@gmail.com](mailto:van141.abel@gmail.com)
-
-- 项目主页：[https://github.com/vanabel/mathbeamer](https://github.com/vanabel/mathbeamer)
-- 许可证：[LPPL v1.3c](http://www.latex-project.org/lppl.txt)
-
----
-
-<div align="center">
-
-**如果这个模板对您有帮助，请给它一个⭐️星标！**
-
-</div>
+    This work consists of the file: ustcmb.dtx
+             and the derived files: ustcmb.ins
+                                    ustcmb.cls
+                                    ustcmb.tex
+                                    ustcmb.cfg
+                                    beamercolorthemeustc.sty
+                                    READEME.md (this file)
 
 
 
