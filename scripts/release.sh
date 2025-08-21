@@ -48,7 +48,7 @@ echo "更新文件中的版本信息..."
 # 更新Makefile中的版本号
 echo "  - 更新Makefile中的版本号..."
 sed -i.bak "s/VER= v[0-9]\+\.[0-9]\+\.[0-9]\+/VER= $VERSION/" Makefile
-rm Makefile.bak
+rm -f Makefile.bak
 
 # 更新DTX文件中的版本号
 echo "  - 更新DTX文件中的版本号..."
