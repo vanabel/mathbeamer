@@ -139,89 +139,77 @@ release:
 	fi
 	@echo "开始发布版本: $(VERSION)"
 	@echo ""
-	@# 检查是否有未提交的更改
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		echo "警告: 有未提交的更改"; \
 		echo "请先提交所有更改，然后继续"; \
 		exit 1; \
 	fi
-	@# 检查是否已经存在该标签
 	@if git tag -l | grep -q "^$(VERSION)$$"; then \
 		echo "错误: 标签 $(VERSION) 已经存在"; \
 		exit 1; \
 	fi
-	@# 提取版本号部分（去掉v前缀）
 	@VERSION_NUM=$$(echo $(VERSION) | sed 's/^v//'); \
 	echo "更新文件中的版本信息..."; \
-	@# 更新Makefile中的版本号
-	@echo "  - 更新Makefile中的版本号..."; \
-	@sed "s/VER= v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/VER= $(VERSION)/" Makefile > Makefile.bak; \
-	@mv Makefile.bak Makefile; \
-	@# 更新DTX文件中的版本号
-	@echo "  - 更新DTX文件中的版本号..."; \
-	@sed "s/\\ProvidesClass{$(NAME)}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{$(NAME)}[2025\/08\/21 $(VERSION)/g" $(NAME).dtx > $(NAME).dtx.bak; \
-	@mv $(NAME).dtx.bak $(NAME).dtx; \
-	@# 更新README.md中的版本号
-	@echo "  - 更新README.md中的版本号..."; \
-	@sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$$VERSION_NUM/g" README.md > README.md.bak; \
-	@mv README.md.bak README.md; \
-	@# 更新README_EN.md中的版本号
-	@echo "  - 更新README_EN.md中的版本号..."; \
-	@sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$$VERSION_NUM/g" README_EN.md > README_EN.md.bak; \
-	@mv README_EN.md.bak README_EN.md; \
-	@# 更新下载链接
-	@echo "  - 更新下载链接..."; \
-	@sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$(VERSION).zip/g" README.md > README.md.bak; \
-	@mv README.md.bak README.md; \
-	@sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$(VERSION).zip/g" README_EN.md > README_EN.md.bak; \
-	@mv README_EN.md.bak README_EN.md; \
-	@sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$(VERSION).zip/g" $(NAME).dtx > $(NAME).dtx.bak; \
-	@mv $(NAME).dtx.bak $(NAME).dtx; \
-	@# 管理README文件中的版本历史
-	@echo "  - 管理README文件中的版本历史..."; \
-	@sed "/## 📋 版本历史/,\$$d" README.md > README.md.bak; \
-	@echo "" >> README.md.bak; \
-	@echo "## 📋 版本历史" >> README.md.bak; \
-	@echo "" >> README.md.bak; \
-	@echo "### [$(VERSION)]" >> README.md.bak; \
-	@echo "" >> README.md.bak; \
-	@echo "- ✨ 新增功能和改进" >> README.md.bak; \
-	@echo "- 🐛 修复已知问题" >> README.md.bak; \
-	@echo "- 📚 更新文档" >> README.md.bak; \
-	@echo "" >> README.md.bak; \
-	@echo "详细更改请查看 [GitHub提交历史](https://github.com/vanabel/mathbeamer/commits/main)" >> README.md.bak; \
-	@mv README.md.bak README.md; \
-	@sed "/## 📋 Version History/,\$$d" README_EN.md > README_EN.md.bak; \
-	@mv README_EN.md.bak README_EN.md; \
-	@echo "版本信息更新完成！"; \
-	@echo ""; \
-	@# 构建发布包
-	@echo "构建发布包..."; \
-	@make clean; \
-	@make zip; \
-	@# 检查发布包是否创建成功
-	@ZIP_FILE="ustcmb-$(VERSION).zip"; \
+	echo "  - 更新Makefile中的版本号..."; \
+	sed "s/VER= v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/VER= $(VERSION)/" Makefile > Makefile.bak; \
+	mv Makefile.bak Makefile; \
+	echo "  - 更新DTX文件中的版本号..."; \
+	sed "s/\\ProvidesClass{$(NAME)}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{$(NAME)}[2025\/08\/21 $(VERSION)/g" $(NAME).dtx > $(NAME).dtx.bak; \
+	mv $(NAME).dtx.bak $(NAME).dtx; \
+	echo "  - 更新README.md中的版本号..."; \
+	sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$$VERSION_NUM/g" README.md > README.md.bak; \
+	mv README.md.bak README.md; \
+	echo "  - 更新README_EN.md中的版本号..."; \
+	sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$$VERSION_NUM/g" README_EN.md > README_EN.md.bak; \
+	mv README_EN.md.bak README_EN.md; \
+	echo "  - 更新下载链接..."; \
+	sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$(VERSION).zip/g" README.md > README.md.bak; \
+	mv README.md.bak README.md; \
+	sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$(VERSION).zip/g" README_EN.md > README_EN.md.bak; \
+	mv README_EN.md.bak README_EN.md; \
+	sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$(VERSION).zip/g" $(NAME).dtx > $(NAME).dtx.bak; \
+	mv $(NAME).dtx.bak $(NAME).dtx; \
+	echo "  - 管理README文件中的版本历史..."; \
+	sed "/## 📋 版本历史/,\$$d" README.md > README.md.bak; \
+	echo "" >> README.md.bak; \
+	echo "## 📋 版本历史" >> README.md.bak; \
+	echo "" >> README.md.bak; \
+	echo "### [$(VERSION)]" >> README.md.bak; \
+	echo "" >> README.md.bak; \
+	echo "- ✨ 新增功能和改进" >> README.md.bak; \
+	echo "- 🐛 修复已知问题" >> README.md.bak; \
+	echo "- 📚 更新文档" >> README.md.bak; \
+	echo "" >> README.md.bak; \
+	echo "详细更改请查看 [GitHub提交历史](https://github.com/vanabel/mathbeamer/commits/main)" >> README.md.bak; \
+	mv README.md.bak README.md; \
+	sed "/## 📋 Version History/,\$$d" README_EN.md > README_EN.md.bak; \
+	mv README_EN.md.bak README_EN.md; \
+	echo "版本信息更新完成！"; \
+	echo ""; \
+	echo "构建发布包..."; \
+	make clean; \
+	make zip; \
+	ZIP_FILE="ustcmb-$(VERSION).zip"; \
 	if [ ! -f "$$ZIP_FILE" ]; then \
 		echo "错误: 发布包 $$ZIP_FILE 创建失败"; \
 		exit 1; \
 	fi; \
 	echo "发布包创建成功: $$ZIP_FILE"; \
-	@# 提交版本更新和发布包
-	@echo "提交版本更新和发布包..."; \
-	@git add Makefile $(NAME).dtx README.md README_EN.md "ustcmb-$(VERSION).zip"; \
-	@git commit -m "发布版本 $(VERSION)"; \
-	@echo ""; \
-	@echo "发布流程完成！"; \
-	@echo ""; \
-	@echo "下一步:"; \
-	@echo "1. 运行: git push origin main"; \
-	@echo "2. 运行: git tag $(VERSION) && git push origin $(VERSION)"; \
-	@echo "3. 等待GitHub Action自动发布到Releases"; \
-	@echo ""; \
-	@echo "重要说明:"; \
-	@echo "- 发布包已在本地构建完成，包含所有必要文件"; \
-	@echo "- 需要手动推送更改和标签"; \
-	@echo "- GitHub Action只负责将zip文件发布到Releases"
+	echo "提交版本更新和发布包..."; \
+	git add Makefile $(NAME).dtx README.md README_EN.md "ustcmb-$(VERSION).zip"; \
+	git commit -m "发布版本 $(VERSION)"; \
+	echo ""; \
+	echo "发布流程完成！"; \
+	echo ""; \
+	echo "下一步:"; \
+	echo "1. 运行: git push origin main"; \
+	echo "2. 运行: git tag $(VERSION) && git push origin $(VERSION)"; \
+	echo "3. 等待GitHub Action自动发布到Releases"; \
+	echo ""; \
+	echo "重要说明:"; \
+	echo "- 发布包已在本地构建完成，包含所有必要文件"; \
+	echo "- 需要手动推送更改和标签"; \
+	echo "- GitHub Action只负责将zip文件发布到Releases"
 
 # 创建发布包（优化版本）
 zip : pre-release
