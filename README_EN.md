@@ -1,11 +1,11 @@
 # ustcmb --- Mathematical Report Template
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-v2.2.3-green.svg)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+[![Version](https://img.shields.io/badge/Version-v2.2.3-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
-[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
-[![Maintenance](https://img.shields.io/badge/Maintenance-Actively%20Maintained-brightgreen.svg)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+[![Maintenance](https://img.shields.io/badge/Maintenance-Actively%20Maintained-brightgreen.svg)](https://github.com/vanabel/mathbeamer)
 
 <div align="right">
 
@@ -21,10 +21,10 @@
 [![Stargazers over time](https://starchart.cc/vanabel/math-beamer.svg?variant=adaptive)](https://starchart.cc/vanabel/math-beamer)
 
 ### Contribution Statistics
-[![GitHub stars](https://img.shields.io/github/stars/vanabel/math-beamer?style=social)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
-[![GitHub forks](https://img.shields.io/github/forks/vanabel/math-beamer?style=social)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
-[![GitHub issues](https://img.shields.io/github/issues/vanabel/math-beamer)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/vanabel/math-beamer)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+[![GitHub stars](https://img.shields.io/github/stars/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
+[![GitHub forks](https://img.shields.io/github/forks/vanabel/mathbeamer?style=social)](https://github.com/vanabel/mathbeamer)
+[![GitHub issues](https://img.shields.io/github/issues/vanabel/mathbeamer)](https://github.com/vanabel/mathbeamer)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/vanabel/mathbeamer)](https://github.com/vanabel/mathbeamer)
 
 ## 📖 Introduction
 
@@ -220,7 +220,7 @@ This project is licensed under [LaTeX Project Public License v1.3c](http://www.l
 
 **Van Abel** - [van141.abel@gmail.com](mailto:van141.abel@gmail.com)
 
-- Project Homepage: [https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+- Project Homepage: [https://github.com/vanabel/mathbeamer](https://github.com/vanabel/mathbeamer)
 - License: [LPPL v1.3c](http://www.latex-project.org/lppl.txt)
 
 ---

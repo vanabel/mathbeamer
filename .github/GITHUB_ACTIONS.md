@@ -151,7 +151,7 @@ make main   # 构建示例
 
 ## 相关链接
 
-- [项目主页](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+- [项目主页](https://github.com/vanabel/mathbeamer)
 - [GitHub Actions](https://github.com/vanabel/mathbeamer/actions)
 - [Releases](https://github.com/vanabel/mathbeamer/releases)
 - [主README文档](../README.md)
