@@ -20,6 +20,8 @@
 
 首先下载该模板的[zip压缩包](https://git.ustclug.org/vanabel/math-beamer/blob/master/ustcmb-v2.2.3.zip), 解压后先阅读下压缩包里面的示例文件`ustcmb-main.pdf`. 然和你可以仿照`ustcmb-main.tex`来写作自己的报告. 更进一步地, 你可以参考模板文档`ustcmb.pdf`. 你也可以参考下面的英文使用说明.
 
+**开发者**: 请查看 [scripts/README.md](scripts/README.md) 了解开发流程和发布方法。
+
 #### Usage
 
 1. download the [zip file](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer/repository/archive.zip?ref=master) and unzip it

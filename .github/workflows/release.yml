@@ -1,0 +1,121 @@
+name: 自动发布
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '要发布的版本号'
+        required: true
+        default: 'v2.2.4'
+        type: string
+      force_release:
+        description: '强制发布（即使zip文件不存在）'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      
+    - name: 检查发布包
+      run: |
+        # 获取版本号
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          VERSION="${{ github.event.inputs.version }}"
+          FORCE_RELEASE="${{ github.event.inputs.force_release }}"
+          echo "手动触发发布版本: $VERSION"
+          echo "强制发布: $FORCE_RELEASE"
+        else
+          VERSION=${GITHUB_REF#refs/tags/}
+          FORCE_RELEASE="false"
+          echo "标签触发发布版本: $VERSION"
+        fi
+        
+        # 检查本地打包的zip文件是否存在
+        ZIP_FILE="ustcmb-$VERSION.zip"
+        
+        if [ ! -f "$ZIP_FILE" ]; then
+          if [ "$FORCE_RELEASE" = "true" ]; then
+            echo "警告: 发布包 $ZIP_FILE 不存在，但强制发布已启用"
+            echo "将创建空的发布包..."
+            
+            # 创建空的发布包结构
+            mkdir -p ustcmb-$VERSION
+            echo "此版本由手动触发发布，发布包将在后续更新" > ustcmb-$VERSION/README.txt
+            zip -r "$ZIP_FILE" ustcmb-$VERSION/
+            rm -rf ustcmb-$VERSION/
+            
+            echo "临时发布包已创建: $ZIP_FILE"
+          else
+            echo "错误: 发布包 $ZIP_FILE 不存在"
+            echo "请先在本地运行以下命令创建发布包："
+            echo "  make zip"
+            echo "  git add $ZIP_FILE"
+            echo "  git commit -m \"添加发布包 $VERSION\""
+            echo ""
+            echo "或者使用强制发布选项（将创建临时发布包）"
+            exit 1
+          fi
+        else
+          echo "发布包检查通过: $ZIP_FILE"
+          
+          # 显示zip包内容
+          echo "ZIP包内容:"
+          unzip -l "$ZIP_FILE"
+          
+          # 检查zip包大小
+          SIZE=$(ls -lh "$ZIP_FILE" | awk '{print $5}')
+          echo "发布包大小: $SIZE"
+        fi
+        
+    - name: 创建GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ustcmb-${{ github.event.inputs.version || github.ref_name }}.zip
+        name: Release ${{ github.event.inputs.version || github.ref_name }}
+        body: |
+          ## 版本 ${{ github.event.inputs.version || github.ref_name }}
+          
+          ### 更新内容
+          - 完整的LaTeX模板包
+          - 包含所有预构建的文件和资源
+          - 支持中文和英文
+          
+          ### 下载
+          - `ustcmb-${{ github.event.inputs.version || github.ref_name }}.zip` - 完整模板包（开箱即用）
+          
+          ### 使用方法
+          1. 下载并解压zip包
+          2. 直接使用模板文件
+          3. 参考 `ustcmb-main.tex` 编写自己的报告
+          4. 查看 `ustcmb.pdf` 了解详细使用说明
+          
+          ### 包含文件
+          - `ustcmb.cls` - LaTeX类文件
+          - `ustcmb.pdf` - 模板文档
+          - `ustcmb-main.tex` - 示例源文件
+          - `ustcmb-main.pdf` - 示例演示
+          - `beamercolorthemeustc.sty` - 颜色主题
+          - `logo/` 和 `figs/` - 资源文件
+          
+          ### 系统要求
+          - XeLaTeX
+          - 支持中文的LaTeX发行版
+          
+          ### 注意
+          这是一个完整的模板包，包含所有预构建文件，可以直接使用。
+          
+          ${{ github.event_name == 'workflow_dispatch' && '### 手动发布说明\n此版本由手动触发发布。' || '' }}
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
