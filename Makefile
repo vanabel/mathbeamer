@@ -156,6 +156,11 @@ release:
 	echo "  - 更新DTX文件中的版本号..."; \
 	sed "s/\\ProvidesClass{$(NAME)}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{$(NAME)}[2025\/08\/21 $(VERSION)/g" $(NAME).dtx > $(NAME).dtx.bak; \
 	mv $(NAME).dtx.bak $(NAME).dtx; \
+	echo "  - 更新DTX文件中的其他版本号位置..."; \
+	sed "s/版本号: v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/版本号: $(VERSION)/g" $(NAME).dtx > $(NAME).dtx.bak; \
+	mv $(NAME).dtx.bak $(NAME).dtx; \
+	sed "s/\[2025\/08\/21 v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]* 中科大数学报告模板类文件\]/\[2025\/08\/21 $(VERSION) 中科大数学报告模板类文件\]/g" $(NAME).dtx > $(NAME).dtx.bak; \
+	mv $(NAME).dtx.bak $(NAME).dtx; \
 	echo "  - 更新README.md中的版本号..."; \
 	sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$$VERSION_NUM/g" README.md > README.md.bak; \
 	mv README.md.bak README.md; \
