@@ -1016,38 +1016,6 @@ CTEX.ORG.
   
   % 自动添加参考文献资源文件
   \AtEndOfClass{\addbibresource{\jobname.bib}}
-  
-  % 为biblatex模式添加amsrefs兼容层
-  % 让 \cite{xxx}*{yyy} 语法在biblatex下也能工作
-  \DeclareCiteCommand{\cite}[\mkbibparens]%
-    {\usebibmacro{prenote}}%
-    {\usebibmacro{citeindex}%
-     \usebibmacro{cite}}%
-    {\multicitedelim}%
-    {\usebibmacro{postnote}}
-  
-  % 定义兼容的 \cite* 命令，支持注释参数
-  \DeclareCiteCommand{\cite*}[\mkbibparens]%
-    {\usebibmacro{prenote}}%
-    {\usebibmacro{citeindex}%
-     \usebibmacro{cite}}%
-    {\multicitedelim}%
-    {\usebibmacro{postnote}}
-  
-  % 重定义 \cite 命令以支持注释参数
-  \let\MB@oldcite\cite
-  \renewcommand{\cite}[2][]{%
-    \ifstrequal{#1}{}%
-      {\MB@oldcite{#2}}%
-      {\MB@oldcite[#1]{#2}}%
-  }
-  
-  % 定义 \cite* 命令以支持注释参数（amsrefs兼容）
-  \newcommand{\cite*}[2][]{%
-    \ifstrequal{#1}{}%
-      {\MB@oldcite{#2}}%
-      {\MB@oldcite[#1]{#2}}%
-  }
 \fi
 
 % 为 amsrefs 模式定义兼容性命令
@@ -1080,6 +1048,20 @@ CTEX.ORG.
   }{%
     \end{refsection}%
   }
+  
+  % 为biblatex模式添加amsrefs兼容层
+  % 让 \cite{xxx}*{yyy} 语法在biblatex下也能工作
+  \makeatletter
+  % 保存原始的cite命令
+  \let\oldcite\cite
+  
+  % 定义新的cite命令，支持amsrefs语法
+  \DeclareRobustCommand{\cite}[1]{%
+    \@ifnextchar*{\citewith{#1}}{\oldcite{#1}}%
+  }
+  
+  % 定义带注释的引用命令
+  \def\citewith#1*#2{\oldcite[#2]{#1}}
 \else
   % 对于 amsrefs 模式，refsection 不起作用，但提供兼容性
   \newenvironment{MBrefsection}[1][]{%
