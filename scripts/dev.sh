@@ -134,8 +134,8 @@ check_version() {
     # 从Makefile获取版本
     VERSION_IN_MAKEFILE=$(grep '^VER=' Makefile | cut -d' ' -f2)
     
-    # 从DTX获取版本
-    VERSION_IN_DTX=$(grep '\\ProvidesPackage.*ustcmb' ustcmb.dtx | sed 's/.*\[\(.*\)\].*/\1/')
+    # 从DTX获取版本（检查ProvidesClass声明）
+    VERSION_IN_DTX=$(grep '^\\ProvidesClass{ustcmb}' ustcmb.dtx | sed 's/.*v\([0-9\.]*\).*/v\1/')
     
     if [ "$VERSION_IN_MAKEFILE" != "$VERSION_IN_DTX" ]; then
         print_error "版本不一致！"

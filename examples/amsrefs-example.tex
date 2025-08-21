@@ -1,0 +1,138 @@
+% ustcmb 模板的 amsrefs 语义化引用示例
+% 编译命令: xelatex amsrefs-example.tex
+% 注意：这是 amsrefs 模式，不需要运行 biber
+
+\documentclass[authoryear,zh]{ustcmb}
+
+% 使用 filecontents 环境创建参考文献文件
+\begin{filecontents}{\jobname.bib}
+@article{SibnerSibnerUhlenbeck1989Solutions,
+    AUTHOR = {Sibner, L. M. and Sibner, R. J. and Uhlenbeck, K.},
+     TITLE = {Solutions to {Y}ang-{M}ills equations that are not self-dual},
+   JOURNAL = {Proc. Nat. Acad. Sci. U.S.A.},
+    VOLUME = {86},
+      YEAR = {1989},
+    NUMBER = {22},
+     PAGES = {8610--8613},
+      ISSN = {0027-8424},
+   MRCLASS = {58E15 (53C05 58E05 81E13)},
+  MRNUMBER = {1023811},
+MRREVIEWER = {Jan Segert},
+       DOI = {10.1073/pnas.86.22.8610},
+       URL = {https://doi.org/10.1073/pnas.86.22.8610},
+}
+
+@article{AtiyahBott1983Yang,
+    AUTHOR = {Atiyah, M. F. and Bott, R.},
+     TITLE = {The {Y}ang-{M}ills equations over {R}iemann surfaces},
+   JOURNAL = {Philos. Trans. Roy. Soc. London Ser. A},
+  FJOURNAL = {Philosophical Transactions of the Royal Society of London.
+              Series A. Mathematical and Physical Sciences},
+    VOLUME = {308},
+      YEAR = {1983},
+    NUMBER = {1505},
+     PAGES = {523--615},
+      ISSN = {0080-4614},
+   MRCLASS = {14F05 (14D22 32G13 32L05 53C05 58E05 58E20 81E13)},
+  MRNUMBER = {702806},
+MRREVIEWER = {Martin A. Guest},
+       DOI = {10.1098/rsta.1983.0017},
+       URL = {https://doi.org/10.1073/pnas.86.22.8610},
+}
+
+@article{EellsSampson1964Harmonic,
+    AUTHOR = {Eells, Jr., James and Sampson, J. H.},
+     TITLE = {Harmonic mappings of {R}iemannian manifolds},
+   JOURNAL = {Amer. J. Math.},
+  FJOURNAL = {American Journal of Mathematics},
+    VOLUME = {86},
+      YEAR = {1964},
+     PAGES = {109--160},
+      ISSN = {0002-2571},
+   MRCLASS = {53.72 (57.50)},
+  MRNUMBER = {164306},
+MRREVIEWER = {J. A. Wolf},
+       DOI = {10.2307/2373037},
+       URL = {https://doi.org/10.1007/s000140050086},
+}
+\end{filecontents}
+
+\title[ustcmb amsrefs示例]{ustcmb 模板的 amsrefs 语义化引用示例}
+\author[作者]{您的姓名}
+\institute[机构]{您的机构}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{amsrefs 语义化引用演示}
+  \frametitle{三种引用形式的对比}
+  
+  根据 amsrefs 文档，在 author-year 模式下有三种引用形式：
+  
+  \begin{enumerate}
+    \item \textbf{括号注释形式}：\cite{SibnerSibnerUhlenbeck1989Solutions}
+    \item \textbf{作者+年份形式}：\citeauthor{AtiyahBott1983Yang} \ycite{AtiyahBott1983Yang}
+    \item \textbf{对象引用形式}：\ocite{EellsSampson1964Harmonic}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{语义化引用命令详解}
+  \frametitle{amsrefs 的引用命令}
+  
+  \begin{itemize}
+    \item \texttt{\textbackslash cite\{key\}} - 括号注释形式 (Author, Year)
+    \item \texttt{\textbackslash ycite\{key\}} - 年份引用 (Year)
+    \item \texttt{\textbackslash ocite\{key\}} - 对象引用 Author (Year)
+    \item \texttt{\textbackslash citeauthor\{key\}} - 只显示作者名
+    \item \texttt{\textbackslash citeyear\{key\}} - 只显示年份
+    \item \texttt{\textbackslash citeauthory\{key\}} - 作者+年份 Author (Year)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{实际使用示例}
+  \frametitle{在句子中的正确用法}
+  
+  \begin{itemize}
+    \item \textbf{括号注释}：调和映射的问题首先在系统理论中出现 \cite{EellsSampson1964Harmonic}
+    
+    \item \textbf{作者+年份}：\citeauthor{AtiyahBott1983Yang} \ycite{AtiyahBott1983Yang} 研究了黎曼曲面上的 Yang-Mills 方程
+    
+    \item \textbf{对象引用}：更多细节请参见 \ocite{SibnerSibnerUhlenbeck1989Solutions}
+    
+    \item \textbf{只显示作者}：\citeauthor{EellsSampson1964Harmonic} 的工作开创了调和映射理论
+    
+    \item \textbf{只显示年份}：这项工作发表于 \citeyear{AtiyahBott1983Yang}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{兼容性命令}
+  \frametitle{biblatex 命令的兼容性}
+  
+  为了保持与 biblatex 代码的兼容性，我们还提供了：
+  
+  \begin{itemize}
+    \item \texttt{\textbackslash textcite\{key\}} $\rightarrow$ \texttt{\textbackslash citeauthor\{key\}}
+    \item \texttt{\textbackslash parencite\{key\}} $\rightarrow$ \texttt{\textbackslash cite\{key\}}
+  \end{itemize}
+  
+  这样您可以在两种模式下使用相同的命令！
+\end{frame}
+
+\begin{frame}{注意事项}
+  \frametitle{amsrefs 模式的限制}
+  
+  \begin{itemize}
+    \item \texttt{MBrefsection} 环境在 amsrefs 模式下不起作用
+    \item \texttt{\textbackslash printbibliography} 命令未定义
+    \item \texttt{\textbackslash nocite} 命令可用，但功能有限
+    \item 参考文献通过 \texttt{\textbackslash bibliography\{\jobname\}} 输出
+  \end{itemize}
+  
+  这些高级功能仅在 \texttt{biblatex} 模式下可用。
+\end{frame}
+
+% 参考文献页面由类文件自动生成
+
+\end{document}

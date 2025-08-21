@@ -1,0 +1,124 @@
+% ustcmb biblatex 功能示例
+% 编译命令: xelatex biblatex-example.tex
+% 需要运行 biber biblatex-example 来生成参考文献
+
+\documentclass[biblatex,authoryear,zh]{ustcmb}
+
+% 使用 filecontents 环境创建参考文献文件
+\begin{filecontents}{\jobname.bib}
+@article{SibnerSibnerUhlenbeck1989Solutions,
+    AUTHOR = {Sibner, L. M. and Sibner, R. J. and Uhlenbeck, K.},
+     TITLE = {Solutions to {Y}ang-{M}ills equations that are not self-dual},
+   JOURNAL = {Proc. Nat. Acad. Sci. U.S.A.},
+  FJOURNAL = {Proceedings of the National Academy of Sciences of the United
+              States of America},
+    VOLUME = {86},
+      YEAR = {1989},
+    NUMBER = {22},
+     PAGES = {8610--8613},
+      ISSN = {0027-8424},
+   MRCLASS = {58E15 (53C05 58E05 81E13)},
+  MRNUMBER = {1023811},
+MRREVIEWER = {Jan Segert},
+       DOI = {10.1073/pnas.86.22.8610},
+       URL = {https://doi.org/10.1073/pnas.86.22.8610},
+}
+
+@article{AtiyahBott1983Yang,
+    AUTHOR = {Atiyah, M. F. and Bott, R.},
+     TITLE = {The {Y}ang-{M}ills equations over {R}iemann surfaces},
+   JOURNAL = {Philos. Trans. Roy. Soc. London Ser. A},
+  FJOURNAL = {Philosophical Transactions of the Royal Society of London.
+              Series A. Mathematical and Physical Sciences},
+    VOLUME = {308},
+      YEAR = {1983},
+    NUMBER = {1505},
+     PAGES = {523--615},
+      ISSN = {0080-4614},
+   MRCLASS = {14F05 (14D22 32G13 32L05 53C05 58E05 58E20 81E13)},
+  MRNUMBER = {702806},
+MRREVIEWER = {Martin A. Guest},
+       DOI = {10.1098/rsta.1983.0017},
+       URL = {https://doi.org/10.1098/rsta.1983.0017},
+}
+
+@article{EellsSampson1964Harmonic,
+    AUTHOR = {Eells, Jr., James and Sampson, J. H.},
+     TITLE = {Harmonic mappings of {R}iemannian manifolds},
+   JOURNAL = {Amer. J. Math.},
+  FJOURNAL = {American Journal of Mathematics},
+    VOLUME = {86},
+      YEAR = {1964},
+     PAGES = {109--160},
+      ISSN = {0002-2571},
+   MRCLASS = {53.72 (57.50)},
+  MRNUMBER = {164306},
+MRREVIEWER = {J. A. Wolf},
+       DOI = {10.2307/2373037},
+       URL = {https://doi.org/10.1007/s000140050086},
+}
+\end{filecontents}
+
+% 参考文献资源由类文件自动添加（\addbibresource{\jobname.bib}）
+
+\title[ustcmb biblatex示例]{ustcmb 模板的 biblatex 功能示例}
+\author[作者]{您的姓名}
+\institute[机构]{您的机构}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{biblatex 功能演示}
+  \frametitle{引用示例}
+  
+  \begin{itemize}
+    \item 作者-年份引用: \textcite{SibnerSibnerUhlenbeck1989Solutions}
+    \item 括号引用: \parencite{AtiyahBott1983Yang}
+    \item 简单引用: \cite{EellsSampson1964Harmonic}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{技术细节}
+  \frametitle{使用的包和选项}
+  
+  \begin{itemize}
+    \item \texttt{biblatex} 包
+    \item \texttt{authoryear} 样式（作者-年份引用）
+    \item \texttt{biber} 后端
+    \item 中文支持 (\texttt{zh} 选项)
+    \item \texttt{filecontents} 自包含参考文献
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{参考文献管理}
+  \frametitle{使用 refsection 环境（仅 biblatex 模式）}
+  
+  在 \texttt{biblatex} 模式下，您可以使用 \texttt{refsection} 环境来管理不同部分的参考文献：
+  
+  \makeatletter
+  \ifMB@biblatex
+    \begin{MBrefsection}
+      \nocite{EellsSampson1964Harmonic,AtiyahBott1983Yang}
+      \printbibliography[heading=subbibliography,title=经典文献]
+    \end{MBrefsection}
+  \else
+    \begin{itemize}
+      \item \texttt{MBrefsection} 环境仅在 \texttt{biblatex} 模式下可用
+      \item \texttt{\textbackslash printbibliography} 命令仅在 \texttt{biblatex} 模式下可用
+      \item 在 \texttt{amsrefs} 模式下，请使用标准的 \texttt{\textbackslash bibliography} 命令
+    \end{itemize}
+  \fi
+  \makeatother
+  
+  \vspace{1em}
+  
+  使用 \texttt{\textbackslash nocite\{*\}} 可以引用所有文献条目：
+  
+  \nocite{*}
+\end{frame}
+
+% 参考文献页面由类文件自动生成
+
+\end{document}

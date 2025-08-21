@@ -1,0 +1,158 @@
+% ustcmb 数学论文专用引用样式示例 (citemath)
+% 编译命令: xelatex math-citation-example.tex
+% 需要运行 biber math-citation-example 来生成参考文献
+% 注意：这是特殊样式，基于 authoryear 但无超链接，使用连字符分隔作者
+
+\documentclass[biblatex,citemath,zh]{ustcmb}
+
+% 使用 filecontents 环境创建参考文献文件
+\begin{filecontents}{\jobname.bib}
+@article{SibnerSibnerUhlenbeck1989Solutions,
+    AUTHOR = {Sibner, L. M. and Sibner, R. J. and Uhlenbeck, K.},
+     TITLE = {Solutions to {Y}ang-{M}ills equations that are not self-dual},
+   JOURNAL = {Proc. Nat. Acad. Sci. U.S.A.},
+  FJOURNAL = {Proceedings of the National Academy of Sciences of the United
+              States of America},
+    VOLUME = {86},
+      YEAR = {1989},
+    NUMBER = {22},
+     PAGES = {8610--8613},
+      ISSN = {0027-8424},
+   MRCLASS = {58E15 (53C05 58E05 81E13)},
+  MRNUMBER = {1023811},
+MRREVIEWER = {Jan Segert},
+       DOI = {10.1073/pnas.86.22.8610},
+       URL = {https://doi.org/10.1073/pnas.86.22.8610},
+}
+
+@article{AtiyahBott1983Yang,
+    AUTHOR = {Atiyah, M. F. and Bott, R.},
+     TITLE = {The {Y}ang-{M}ills equations over {R}iemann surfaces},
+   JOURNAL = {Philos. Trans. Roy. Soc. London Ser. A},
+  FJOURNAL = {Philosophical Transactions of the Royal Society of London.
+              Series A. Mathematical and Physical Sciences},
+    VOLUME = {308},
+      YEAR = {1983},
+    NUMBER = {1505},
+     PAGES = {523--615},
+      ISSN = {0080-4614},
+   MRCLASS = {14F05 (14D22 32G13 32L05 53C05 58E05 58E20 81E13)},
+  MRNUMBER = {702806},
+MRREVIEWER = {Martin A. Guest},
+       DOI = {10.1098/rsta.1983.0017},
+       URL = {https://doi.org/10.1098/rsta.1983.0017},
+}
+
+@article{EellsSampson1964Harmonic,
+    AUTHOR = {Eells, Jr., James and Sampson, J. H.},
+     TITLE = {Harmonic mappings of {R}iemannian manifolds},
+   JOURNAL = {Amer. J. Math.},
+  FJOURNAL = {American Journal of Mathematics},
+    VOLUME = {86},
+      YEAR = {1964},
+     PAGES = {109--160},
+      ISSN = {0002-2571},
+   MRCLASS = {53.72 (57.50)},
+  MRNUMBER = {164306},
+MRREVIEWER = {J. A. Wolf},
+       DOI = {10.2307/2373037},
+       URL = {https://doi.org/10.1007/s000140050086},
+}
+\end{filecontents}
+
+\title[数学论文引用样式示例]{ustcmb 数学论文专用引用样式示例}
+\subtitle{演示 J. Sacks-K. Uhlenbeck, 81' 格式}
+\author[作者]{您的姓名}
+\institute[机构]{您的机构}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{数学论文引用样式特点}
+  \frametitle{引用格式特征}
+  
+  \begin{itemize}
+    \item \textbf{作者格式}: 使用连字符分隔，如 \textcite{SibnerSibnerUhlenbeck1989Solutions}
+    \item \textbf{年份格式}: 两位数加撇号，如 \parencite{AtiyahBott1983Yang}
+    \item \textbf{引用格式}: 作者, 年份，如 \cite{SibnerSibnerUhlenbeck1989Solutions}
+  \end{itemize}
+  
+  \vspace{1em}
+  
+  \frametitle{数学论文标准格式}
+  
+  这种引用样式特别适合数学论文，因为：
+  \begin{itemize}
+    \item 作者名称简洁明了
+    \item 年份格式节省空间
+    \item 符合数学期刊的引用规范
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{引用示例}
+  \frametitle{各种引用方式}
+  
+  \begin{itemize}
+    \item \textbf{文本引用}: \textcite{SibnerSibnerUhlenbeck1989Solutions} 研究了调和映射的热流
+    \item \textbf{括号引用}: 调和映射的紧致性 \parencite{AtiyahBott1983Yang}
+    \item \textbf{简单引用}: 关于 Yang-Mills 方程的更多工作 \cite{SibnerSibnerUhlenbeck1989Solutions}
+  \end{itemize}
+  
+  \vspace{1em}
+  
+  \frametitle{数学公式中的引用}
+  
+  在数学公式中，我们可以这样引用：
+  \[
+    E(u) = \int_M |\nabla u|^2 \, dV
+  \]
+  其中 $u$ 是调和映射 \parencite{EellsSampson1964Harmonic}。
+\end{frame}
+
+\begin{frame}{技术细节}
+  \frametitle{使用的包和选项}
+  
+  \begin{itemize}
+    \item \texttt{biblatex} 包
+    \item \texttt{citemath} 数学论文专用样式
+    \item \texttt{biber} 后端
+    \item 中文支持 (\texttt{zh} 选项)
+    \item 自定义引用格式
+  \end{itemize}
+  
+  \vspace{1em}
+  
+  \frametitle{样式特点}
+  
+  \begin{itemize}
+    \item 作者格式：\texttt{given-family}
+    \item 分隔符：连字符 (--)
+    \item 年份格式：两位数 + 撇号
+    \item 引用格式：作者, 年份
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{参考文献管理}
+  \frametitle{使用 refsection 环境}
+  
+  您可以使用 \texttt{refsection} 环境来管理不同部分的参考文献：
+  
+  \begin{MBrefsection}
+    \nocite{AtiyahBott1983Yang}
+    \printbibliography[heading=subbibliography,title=经典文献]
+  \end{MBrefsection}
+  
+  \vspace{1em}
+  
+  \frametitle{引用所有文献}
+  
+  使用 \texttt{\textbackslash nocite\{*\}} 可以引用所有文献条目：
+  
+  \nocite{*}
+\end{frame}
+
+% 参考文献页面由类文件自动生成
+
+\end{document}

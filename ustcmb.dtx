@@ -5,10 +5,7 @@
 % \iffalse meta-comment
 % !TeX program = XeLaTeX
 % !TeX encoding = UTF-8
-%
-% Copyright (C) 2016 by Van Abel <van141.abel@gmail.com>
-% ---------------------------------------------------------------------
-%
+
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either
 % version 1.3c of this license or (at your option) any later
@@ -31,94 +28,172 @@
 %<*readme>
 # ustcmb --- 数学类报告模板
 
-### 简介
+[![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
+[![Version](https://img.shields.io/badge/Version-v2.2.3-green.svg)](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer)
+[![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 
-`ustcmb`(ustcmethbeamer) 是基于USTC学校主题定制的报告模板, 利用它可以非常方便的制作幻灯片. 它同时支持中文与英文的处理, 以及良好的打印模式.
+> 基于USTC学校主题定制的数学报告模板，支持中英文双语，提供良好的打印模式
 
-----------------------------------------------------------------
-       模板名称: ustcmb 
-           描述: 中科大数学报告模板
-       模板网址: https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer
-         版本号: v2.2.3
-           作者: Van Abel
-         E-mail: van141.abel@gmail.com
-        License: LaTeX Project Public License v1.3c or later
-    License URI: http://www.latex-project.org/lppl.txt
+## 📖 简介
 
-----------------------------------------------------------------
+`ustcmb` (ustcmethbeamer) 是基于USTC学校主题定制的报告模板，利用它可以非常方便地制作数学类幻灯片。它同时支持中文与英文的处理，以及良好的打印模式。
 
-### 如何使用模板
+### ✨ 主要特性
 
-首先下载该模板的[zip压缩包](https://git.ustclug.org/vanabel/math-beamer/blob/master/ustcmb-v2.2.3.zip), 解压后先阅读下压缩包里面的示例文件`ustcmb-main.pdf`. 然和你可以仿照`ustcmb-main.tex`来写作自己的报告. 更进一步地, 你可以参考模板文档`ustcmb.pdf`. 你也可以参考下面的英文使用说明.
+- 🎨 基于USTC学校主题的现代化设计
+- 🌏 完整的中英文双语支持
+- 📚 灵活的参考文献处理（支持amsrefs和biblatex）
+- 🎯 丰富的定理环境配置选项
+- 🖨️ 优化的打印模式支持
+- 📱 响应式布局设计
 
-#### Usage
+## 🚀 快速开始
 
-1. download the [zip file](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer/repository/archive.zip?ref=master) and unzip it
-2. get into the root folder of `math-beamer-master-*`, where * is the version of git, open the pdf file [`math-beamer.pdf`](https://gitlab.lug.ustc.edu.cn/vanabel/math-beamer/blob/master/math-beamer.pdf), see the template style
-3. if you like it, then you can write your slides in `math-beamer.tex`
-4. you will see, there are some options as explained at the begining
- * **thmnum**: numbered theorems
- * **eqsecnum**: number equaiton with section
- * **authoryear**: author-year style reference
- * **allcites**: output all the reference in bib.bib
- * **nds**: not use the default setting
-5. **BE CAREFUL** to use the nds options, in that case, you will need to define at least the following options:
-	* set theme by: `\usetheme{}`, see [beamer-theme-matrix](see http://www.hartwork.org/beamer-theme-matrix/) for a list of themes
-	* set the title page by add `\frame{\titlepage}` right after the `\begin{document}`
-  * set your theorem environment as your thesis, e.g.:  `\newtheorem{thm}{Theorem}`
-  * *Optional* set the color theme by: `\usecolortheme{}`, see [index-by-theme-and-color](http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme_and_color.html) for a list of color and theme
-6. finally, the reference is proceeded by `amsrefs`, you need to find the `biblatex` data from [AMS MathScinet](http://www.ams.org/mathscinet/)
+### 下载安装
 
-### 如何升级模板
+1. 下载模板压缩包：[ustcmb-v2.2.3.zip](https://git.ustclug.org/vanabel/math-beamer/blob/master/ustcmb-v2.2.3.zip)
+2. 解压后阅读示例文件 `ustcmb-main.pdf`
+3. 参考 `ustcmb-main.tex` 开始编写您的报告
 
->说明: 如果你没有使用过该模板, 则无需升级, 直接下载最新版即可使用.
+### 基本使用
 
-在`v1.2.0`以前, 只需下载并解压最新版zip, 然后将`slides/*`下的文件替换为你自己的内容即可. 
+```latex
+\documentclass[zh]{ustcmb}
 
-从`v1.2.0`升级到`v2.0.0`则需要自己仿照`ustcmb-main.tex`写作(事实上主要是手动`\input sliedes/main.tex`, 其它部分和原来的模板类似).
+\title{您的报告标题}
+\author{您的姓名}
+\institute{您的机构}
 
-## 版本历史
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{第一张幻灯片}
+内容...
+\end{frame}
+
+\end{document}
+```
+
+## ⚙️ 配置选项
+
+### 核心选项
+
+| 选项 | 描述 | 默认值 |
+|------|------|--------|
+| `zh` | 启用中文支持 | 启用 |
+| `en` | 英文模式 | 禁用 |
+| `thmnum` | 定理带编号 | 禁用 |
+| `eqsecnum` | 公式以节编号 | 禁用 |
+
+### 参考文献选项
+
+| 选项 | 描述 | 依赖 |
+|------|------|------|
+| `authoryear` | 作者年代引用样式 (amsrefs) | amsrefs |
+| `allcites` | 输出bib.bib中的所有参考文献 | amsrefs |
+| `biblatex` | 使用现代biblatex包 | biblatex |
+| `citemath` | 数学论文专用引用样式 | biblatex + xstring |
+
+### 高级选项
+
+| 选项 | 描述 |
+|------|------|
+| `nds` | 不使用默认设置（需要手动配置） |
+| `subnav` | 在每个子节显示导航 |
+| `nobib` | 禁用参考文献处理 |
+
+## 📚 示例文件
+
+项目包含多个示例文件，帮助您快速上手：
+
+- `ustcmb-main.tex` - 主要示例文件
+- `biblatex-example.tex` - biblatex使用示例
+- `amsrefs-example.tex` - amsrefs使用示例
+- `math-citation-example.tex` - 数学引用示例
+
+## 🔧 自定义配置
+
+### 使用nds选项时的必要配置
+
+当使用 `nds` 选项时，您需要手动配置以下内容：
+
+```latex
+\documentclass[nds]{ustcmb}
+
+% 设置主题
+\usetheme{YourTheme}
+
+% 设置标题页
+\begin{document}
+\frame{\titlepage}
+
+% 设置定理环境
+\newtheorem{thm}{Theorem}
+
+% 可选：设置颜色主题
+\usecolortheme{YourColorTheme}
+```
+
+### 字体配置
+
+模板支持自定义中文字体：
+
+```latex
+% 在导言区设置
+\setCJKmainfont{YourChineseFont}
+\setCJKsansfont{YourChineseSansFont}
+```
+
+## 📋 版本历史
+
+### [v2.2.4] (开发中)
+
+- ✨ 新增 `biblatex` 选项，支持现代参考文献处理
+- ✨ 新增多种引用样式选项
+- 🔄 保持对传统 `amsrefs` 的向后兼容性
+- ⚡ 优化参考文献配置和引用格式
 
 ### [v2.2.3]
 
-1. 新增`nobib`选项
-2. 移除多余的参考文献导航
-3. 重新设置中文字体，使得Mac系统和Windows系统都可用
-4. 重新配置模板标题/正文字体
+- ✨ 新增 `nobib` 选项
+- 🧹 移除多余的参考文献导航
+- 🔤 重新设置中文字体，支持Mac和Windows系统
+- 🎨 重新配置模板标题/正文字体
 
 ### [v2.2.2]
 
-* 新增中文自定义字体命令
+- ✨ 新增中文自定义字体命令
 
 ### [v2.2.1]
 
-* Fix the `\CJKunderwave` incompatibly
+- 🐛 修复 `\CJKunderwave` 兼容性问题
 
 ### [v2.2.0]
 
-1. Add `subnav` option: display navigation at each subsection
-2. Add example for how to fix the confliction issue of `allowframebreaks` and step display of itemize environment
-3. Remove **Thanks!** page, since it should be replaced by a summary of your presentation.
+- ✨ 新增 `subnav` 选项：在每个子节显示导航
+- 📖 添加解决 `allowframebreaks` 和 `itemize` 环境冲突的示例
+- 🗑️ 移除"Thanks!"页面，应由演示总结替代
 
 ### [v2.1.0]
 
-1. Add SJTU logo
-2. Add `domc` for SJTU
+- 🏫 新增SJTU标志支持
+- ✨ 为SJTU添加 `domc` 选项
 
 ### [v2.0.1]
 
-1. Add user FAQ
-2. Modify Thanks at last frame based on mode `zh` or `en`
+- 📚 新增用户FAQ
+- 🌏 根据 `zh` 或 `en` 模式修改最后一帧的感谢内容
 
-### [v 2.0.0]
+### [v2.0.0]
 
-1. Use dtx to manage doc
-2. Remove xeCJK fontsetting (should be done by user instead)
+- 🔧 使用dtx管理文档
+- 🗑️ 移除xeCJK字体设置（应由用户自行配置）
 
-### [v 1.2.0]
+### [v1.2.0]
 
-1. Add chinese support option, just use `zh` to support chinese
-2. Add default colortheme to be more like USTC color (blue in main)
+- 🌏 新增中文支持选项，使用 `zh` 启用中文支持
+- 🎨 新增默认颜色主题，更接近USTC颜色（主色调为蓝色）
 
 ### [v 1.1.1]
 
@@ -278,7 +353,7 @@ and the derived files:
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{ustcmb}
 %<*class>
-[2018/06/03 v2.2.3 中科大数学报告模板类文件]
+[2025/08/21 v2.2.4 中科大数学报告模板类文件]
 %</class>
 %
 %<*driver>
@@ -371,6 +446,10 @@ CTEX.ORG.
 %   Right bracket \]     Circumflex    \^     Underscore    \_
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
+% \changes{v2.2.4}{2025/08/21}{新增\opt{biblatex}选项，支持现代参考文献处理}
+% \changes{v2.2.4}{2025/08/21}{新增\opt{citemath}选项，支持数学论文专用引用样式}
+% \changes{v2.2.4}{2025/08/21}{保持对传统\pkg{amsrefs}的向后兼容性}
+% \changes{v2.2.4}{2025/08/21}{优化参考文献配置和引用格式}
 % \changes{v2.2.3}{2018/06/03}{移除多余的参考文献导航}
 % \changes{v2.2.3}{2018/06/03}{重新设置中文字体，使得Mac系统和Windows系统都可用}
 % \changes{v2.2.3}{2018/06/03}{新增\shellcmd{nobib}选项}
@@ -458,9 +537,17 @@ CTEX.ORG.
 %     \hline
 %     \opt{subnav} & 在每小节开始显示小节导航\\
 %     \hline
-%     \opt{authoryear} & 作者年代型文献引用\\
+%     \opt{authoryear} & 作者年代型文献引用(amsrefs)\\
 %     \hline
 %     \opt{allcites} & 自动列出所有参考文献\\
+%     \hline
+%     \opt{biblatex} & 使用现代biblatex包替代amsrefs\\
+%     \hline
+
+%     \hline
+
+
+%     \opt{citemath} & biblatex数学论文专用引用样式（需要xstring包）\\
 %     \hline
 %     \opt{nds} & 不使用默认设置\\
 %     \hline
@@ -712,6 +799,22 @@ CTEX.ORG.
 \newif\ifMB@nobib\MB@nobibfalse
 \DeclareOption{nobib}{\MB@nobibtrue}
 %    \end{macrocode}
+% \opt{biblatex}选项: 使用现代biblatex包替代amsrefs
+%    \begin{macrocode}
+\newif\ifMB@biblatex\MB@biblatexfalse
+\DeclareOption{biblatex}{\MB@biblatextrue}
+%    \end{macrocode}
+
+
+
+
+
+% \opt{citemath}选项: biblatex的数学论文专用引用样式（需要xstring包）
+%    \begin{macrocode}
+\newif\ifMB@citemath\MB@citemathfalse
+\DeclareOption{citemath}{\MB@citemathtrue}
+%    \end{macrocode}
+
 % \opt{zh}选项: 中文模式
 %    \begin{macrocode}
 \DeclareOption{zh}{\MB@zhtrue}
@@ -726,6 +829,10 @@ CTEX.ORG.
 %    \begin{macrocode}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
 \ProcessOptions\relax
+%    \end{macrocode}
+% 提供标准的类声明
+%    \begin{macrocode}
+\ProvidesClass{ustcmb}[2025/08/21 v2.2.4 USTC Math Beamer Template]
 %    \end{macrocode}
 % \subsection{基于模式加载文档类}
 % 如果是打印(\opt{print})模式
@@ -767,8 +874,6 @@ CTEX.ORG.
 %    \begin{macrocode}
 \RequirePackage{ulem}
 \AtEndOfClass{\input{ustcmb.cfg}}
-\else
-\AtEndOfClass{\input{ustcmb.cfg}}
 \fi
 %    \end{macrocode}
 % \opt{logo}选项: 表示使用学校/学院logo
@@ -783,14 +888,174 @@ CTEX.ORG.
 }
 \fi
 %    \end{macrocode}
-% \opt{auhhoryear}选项: 使用作者年代的参考文献方式
+% 参考文献处理: 支持amsrefs和现代biblatex
+% - amsrefs: 默认alphabetic样式，可选authoryear样式
+% - biblatex: 默认alphabetic样式，可选authoryear样式（通过biblatex,authoryear组合）
 %    \begin{macrocode}
-\ifMB@authoryear
-\RequirePackage[author-year, msc-links, lite, abbrev]{amsrefs}
-\else
-\RequirePackage[alphabetic, msc-links, lite, abbrev]{amsrefs}
+\ifMB@biblatex
+  % 使用现代biblatex包
+  \ifMB@citemath
+    \RequirePackage[backend=biber,style=authoryear,citestyle=authoryear,url=false,doi=false,isbn=false]{biblatex}
+  \else
+    \ifMB@authoryear
+      % 如果同时指定biblatex和authoryear，使用biblatex的authoryear样式
+      \RequirePackage[backend=biber,style=authoryear,citestyle=authoryear,url=false,doi=false,isbn=false]{biblatex}
+      % 确保引用标签使用作者-年份格式
+      \ExecuteBibliographyOptions{labeldate=true,uniquelist=false}
+    \else
+      % 默认使用alphabetic样式（与amsrefs保持一致）
+      \RequirePackage[backend=biber,style=alphabetic,citestyle=alphabetic,url=false,doi=false,isbn=false]{biblatex}
+    \fi
+  \fi
+  % 在包加载后配置作者名称格式
+  \ExecuteBibliographyOptions{maxcitenames=999,mincitenames=1,uniquelist=false,uniquename=init,giveninits=true}
+  
+  % 如果使用authoryear样式，确保引用标签也是作者-年份格式
+  \ifMB@authoryear
+    % 配置authoryear样式的引用标签
+    \DeclareFieldFormat{year}{\mkbibparens{#1}}
+    \renewcommand*{\multicitedelim}{\addsemicolon\space}
+    \renewcommand*{\compcitedelim}{\addcomma\space}
+    % 在作者和年份之间添加逗号和空格
+    \renewcommand*{\nameyeardelim}{\addcomma\space}
+    
+    % 设置字段格式（类似amsrefs风格）
+    \DeclareFieldFormat{title}{\emph{#1}}
+    \DeclareFieldFormat{journal}{#1}
+    \DeclareFieldFormat{volume}{\textbf{#1}}
+    \DeclareFieldFormat{pages}{#1}
+    \DeclareFieldFormat{doi}{#1}
+    \DeclareFieldFormat{url}{#1}
+    \DeclareFieldFormat{isbn}{#1}
+    \DeclareFieldFormat{issn}{#1}
+    
+    % 移除标题的引号，使用斜体
+    \DeclareFieldFormat{title}{\emph{#1}}
+    \DeclareFieldFormat{journaltitle}{#1}
+    
+    % 移除期刊名称的下划线
+    \DeclareFieldFormat{journal}{#1}
+    \DeclareFieldFormat{journaltitle}{#1}
+    
+    % 确保期刊名称没有下划线（覆盖默认样式）
+    % 注意：这些命令可能不是标准的 biblatex 命令，但尝试覆盖可能的
+    
+    % 移除标题的引号
+    \renewcommand*{\mkbibquote}[1]{#1}
+    \renewcommand*{\mkbibemph}[1]{#1}
+  \else
+    % 配置alphabetic样式的引用标签
+    \DeclareFieldFormat{year}{\mkbibparens{#1}}
+    \renewcommand*{\multicitedelim}{\addsemicolon\space}
+    \renewcommand*{\compcitedelim}{\addcomma\space}
+  \fi
+  
+  % 确保biblatex完全初始化
+  \AtEndOfClass{\ExecuteBibliographyOptions{maxcitenames=999,mincitenames=1,uniquelist=false,uniquename=init,giveninits=true}}
+  
+  % 数学论文专用引用样式配置
+  \ifMB@citemath
+    % 加载 xstring 包（用于年份处理）
+    \RequirePackage{xstring}
+    
+    % 自定义参考文献标题样式
+    \defbibheading{mybib}[\refname]{}
+    \DeclarePrintbibliographyDefaults{heading=mybib}
+    
+    % 移除不必要的超链接和下划线，但保持引用超链接
+    \renewcommand*{\mkbibnamefamily}[1]{\bibhyperref{#1}}
+    \renewcommand*{\mkbibnamegiven}[1]{#1}
+    \renewcommand*{\mkbibnamesuffix}[1]{#1}
+    \renewcommand*{\mkbibnameprefix}[1]{#1}
+    \renewcommand*{\nameyeardelim}{\space}
+    
+    % 作者格式：显示名字首字母缩写和姓氏，用连字符分隔
+    \DeclareNameAlias{labelname}{given-family}
+    \DeclareNameAlias{sortname}{family-given}
+    
+    % 使用连字符分隔多个作者
+    \DeclareDelimFormat{multinamedelim}{-}
+    \DeclareDelimFormat{finalnamedelim}{-}
+    
+    % 年份格式：两位数加撇号 (81')
+    \DeclareFieldFormat{year}{%
+      \IfInteger{#1}%
+        {%
+          \StrRight{#1}{2}[\yeartwo]%
+          \yeartwo$'$%
+        }%
+        {#1}%
+    }
+    
+    % 设置字段格式（类似amsrefs风格）
+    \DeclareFieldFormat{title}{\emph{#1}}
+    \DeclareFieldFormat{journal}{#1}
+    \DeclareFieldFormat{volume}{\textbf{#1}}
+    \DeclareFieldFormat{pages}{#1}
+    \DeclareFieldFormat{doi}{#1}
+    \DeclareFieldFormat{url}{#1}
+    \DeclareFieldFormat{isbn}{#1}
+    \DeclareFieldFormat{issn}{#1}
+    
+    % 移除期刊名称的下划线
+    \DeclareFieldFormat{journal}{#1}
+    \DeclareFieldFormat{journaltitle}{#1}
+    
+    % 确保期刊名称没有下划线（覆盖默认样式）
+    % 注意：这些命令可能不是标准的 biblatex 命令，但尝试覆盖可能的默认行为
+    
+    % \setunit{\addcomma\space}%
+    % \printfield{year}%
+    
+    % 可选调整
+    \renewcommand*{\intitlepunct}{\addcomma\space}%
+    \renewcommand*{\nameyeardelim}{\addcomma\space}%
+  \fi
+  
+  % 自动添加参考文献资源文件
+  \AtEndOfClass{\addbibresource{\jobname.bib}}
 \fi
-%    \end{macrocode}
+
+% 为 amsrefs 模式定义兼容性命令
+% 根据模式自动选择：biblatex使用\printbibliography，amsrefs使用\bibliography
+\newcommand{\MB@printbibliography}[1][]{%
+  \ifMB@biblatex
+    \printbibliography[#1]%
+  \else
+    \bibliography{#1}%
+  \fi
+}
+
+% 添加 amsrefs 包加载（向后兼容）
+\ifMB@biblatex
+  % biblatex 模式下不需要 amsrefs
+\else
+  % 使用传统amsrefs包（向后兼容）
+  \ifMB@authoryear
+    \RequirePackage[author-year, msc-links, lite, abbrev]{amsrefs}
+  \else
+    \RequirePackage[alphabetic, msc-links, lite, abbrev]{amsrefs}
+  \fi
+\fi
+
+% 添加 refsection 支持（仅 biblatex 模式）
+\ifMB@biblatex
+  % 定义 refsection 环境的简化版本
+  \newenvironment{MBrefsection}[1][]{%
+    \begin{refsection}[#1]%
+  }{%
+    \end{refsection}%
+  }
+\else
+  % 对于 amsrefs 模式，refsection 不起作用，但提供兼容性
+  \newenvironment{MBrefsection}[1][]{%
+    % 在 amsrefs 模式下，refsection 被忽略
+    \ignorespaces%
+  }{%
+    \unskip%
+  }
+\fi
+
 % \opt{thmnum}选项: 定理带编号
 %    \begin{macrocode}
 \ifMB@thmnum
@@ -907,8 +1172,13 @@ CTEX.ORG.
     \begin{frame}[t, allowframebreaks]{%
         \ifMB@zh 参考文献\else Reference\fi
       }
-      \bibliography{\jobname}
-      \ifMB@allcites\nocite{*}\fi
+      \ifMB@biblatex
+        \printbibliography
+        \ifMB@allcites\nocite{*}\fi
+      \else
+        \bibliography{\jobname}
+        \ifMB@allcites\nocite{*}\fi
+      \fi
     \end{frame}
     \setcounter{framenumber}{\value{ffn}}
     }

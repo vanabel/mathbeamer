@@ -45,6 +45,14 @@ echo "更新Makefile中的版本号..."
 sed -i.bak "s/VER= v[0-9]\+\.[0-9]\+\.[0-9]\+/VER= $VERSION/" Makefile
 rm Makefile.bak
 
+# 更新DTX文件中的版本号
+echo "更新DTX文件中的版本号..."
+# 提取版本号部分（去掉v前缀）
+VERSION_NUM=$(echo $VERSION | sed 's/^v//')
+# 更新DTX文件中的版本号
+sed -i.bak "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/v$VERSION_NUM/g" ustcmb.dtx
+rm ustcmb.dtx.bak
+
 # 构建完整的发布包
 echo "构建完整的发布包..."
 make clean
@@ -61,7 +69,7 @@ echo "发布包创建成功: $ZIP_FILE"
 
 # 提交版本更新和发布包
 echo "提交版本更新和发布包..."
-git add Makefile "$ZIP_FILE"
+git add Makefile ustcmb.dtx "$ZIP_FILE"
 git commit -m "发布版本 $VERSION"
 
 # 推送更改
