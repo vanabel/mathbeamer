@@ -24,7 +24,7 @@
 
 ### 下载安装
 
-1. 下载模板压缩包：[ustcmb-v2.2.3.zip](https://github.com/vanabel/mathbeamer/blob/main/ustcmb-v2.2.3.zip)
+1. 下载模板压缩包：[最新版本](https://github.com/vanabel/mathbeamer/releases/latest)
 2. 解压后阅读示例文件 `ustcmb-main.pdf`
 3. 参考 `ustcmb-main.tex` 开始编写您的报告
 
