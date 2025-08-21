@@ -52,44 +52,45 @@ echo "更新文件中的版本信息..."
 
 # 更新Makefile中的版本号
 echo "  - 更新Makefile中的版本号..."
-sed -i.bak "s/VER= v[0-9]\+\.[0-9]\+\.[0-9]\+/VER= $VERSION/" Makefile
-rm -f Makefile.bak
+sed "s/VER= v[0-9]\+\.[0-9]\+\.[0-9]\+/VER= $VERSION/" Makefile > Makefile.bak
+mv Makefile.bak Makefile
 
 # 更新DTX文件中的版本号
 echo "  - 更新DTX文件中的版本号..."
-sed -i.bak "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/$VERSION/g" ustcmb.dtx
-rm ustcmb.dtx.bak
+sed "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/$VERSION/g" ustcmb.dtx > ustcmb.dtx.bak
+mv ustcmb.dtx.bak ustcmb.dtx
 
 # 更新README.md中的版本号
 echo "  - 更新README.md中的版本号..."
-sed -i.bak "s/Version-v[0-9]\+\.[0-9]\+\.[0-9]\+/Version-$VERSION_NUM/g" README.md
-rm README.md.bak
+sed "s/Version-v[0-9]\+\.[0-9]\+\.[0-9]\+/Version-$VERSION_NUM/g" README.md > README.md.bak
+mv README.md.bak README.md
 
 # 更新README_EN.md中的版本号
 echo "  - 更新README_EN.md中的版本号..."
-sed -i.bak "s/Version-v[0-9]\+\.[0-9]\+\.[0-9]\+/Version-$VERSION_NUM/g" README_EN.md
-rm README_EN.md.bak
+sed "s/Version-v[0-9]\+\.[0-9]\+\.[0-9]\+/Version-$VERSION_NUM/g" README_EN.md > README_EN.md.bak
+mv README_EN.md.bak README_EN.md
 
 # 更新README.md中的下载链接
 echo "  - 更新README.md中的下载链接..."
-sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" README.md
-rm README.md.bak
+sed "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" README.md > README.md.bak
+mv README.md.bak README.md
 
 # 更新README_EN.md中的下载链接
 echo "  - 更新README_EN.md中的下载链接..."
-sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" README_EN.md
-rm README_EN.md.bak
+sed "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" README_EN.md > README_EN.md.bak
+mv README_EN.md.bak README_EN.md
 
 # 更新DTX文件中的下载链接
 echo "  - 更新DTX文件中的下载链接..."
-sed -i.bak "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" ustcmb.dtx
-rm ustcmb.dtx.bak
+sed "s/ustcmb-v[0-9]\+\.[0-9]\+\.[0-9]\+\.zip/ustcmb-$VERSION.zip/g" ustcmb.dtx > ustcmb.dtx.bak
+mv ustcmb.dtx.bak ustcmb.dtx
 
 # 更新版本历史中的开发中标记
 echo "  - 更新版本历史标记..."
-sed -i.bak "s/### \[$VERSION\] (开发中)/### [$VERSION]/g" README.md
-sed -i.bak "s/### \[$VERSION\] (In Development)/### [$VERSION]/g" README_EN.md
-rm README.md.bak README_EN.md.bak 2>/dev/null || true
+sed "s/### \[$VERSION\] (开发中)/### [$VERSION]/g" README.md > README.md.bak
+mv README.md.bak README.md
+sed "s/### \[$VERSION\] (In Development)/### [$VERSION]/g" README_EN.md > README_EN.md.bak
+mv README_EN.md.bak README_EN.md
 
 echo "版本信息更新完成！"
 echo ""
