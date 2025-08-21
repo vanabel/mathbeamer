@@ -57,47 +57,62 @@ mv Makefile.bak Makefile
 
 # 更新DTX文件中的版本号
 echo "  - 更新DTX文件中的版本号..."
-# 更新所有版本号格式
-sed "s/v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/$VERSION/g" ustcmb.dtx > ustcmb.dtx.bak
+# 更新\ProvidesClass行中的版本号
+sed "s/\\ProvidesClass{ustcmb}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{ustcmb}[2025\/08\/21 $VERSION/g" ustcmb.dtx > ustcmb.dtx.bak
 mv ustcmb.dtx.bak ustcmb.dtx
 
-# 更新版本历史中的开发中标记
-echo "  - 更新版本历史标记..."
-sed "s/### \[$VERSION\] (开发中)/### [$VERSION]/g" ustcmb.dtx > ustcmb.dtx.bak
-mv ustcmb.dtx.bak ustcmb.dtx
-sed "s/### \[$VERSION\] (In Development)/### [$VERSION]/g" ustcmb.dtx > ustcmb.dtx.bak
-mv ustcmb.dtx.bak ustcmb.dtx
+
 
 # 更新README.md中的版本号
 echo "  - 更新README.md中的版本号..."
+# 更新版本徽章
 sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$VERSION_NUM/g" README.md > README.md.bak
 mv README.md.bak README.md
 
 # 更新README_EN.md中的版本号
 echo "  - 更新README_EN.md中的版本号..."
+# 更新版本徽章
 sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$VERSION_NUM/g" README_EN.md > README_EN.md.bak
 mv README_EN.md.bak README_EN.md
 
 # 更新README.md中的下载链接
 echo "  - 更新README.md中的下载链接..."
+# 更新下载链接
 sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$VERSION.zip/g" README.md > README.md.bak
 mv README.md.bak README.md
 
 # 更新README_EN.md中的下载链接
 echo "  - 更新README_EN.md中的下载链接..."
+# 更新下载链接
 sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$VERSION.zip/g" README_EN.md > README_EN.md.bak
 mv README_EN.md.bak README_EN.md
 
 # 更新DTX文件中的下载链接
 echo "  - 更新DTX文件中的下载链接..."
+# 更新下载链接
 sed "s/ustcmb-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.zip/ustcmb-$VERSION.zip/g" ustcmb.dtx > ustcmb.dtx.bak
 mv ustcmb.dtx.bak ustcmb.dtx
 
-# 更新版本历史中的开发中标记
-echo "  - 更新版本历史标记..."
-sed "s/### \[$VERSION\] (开发中)/### [$VERSION]/g" README.md > README.md.bak
+# 移除README.md中的changelog部分
+echo "  - 移除README.md中的changelog部分..."
+# 删除从版本历史开始到文件末尾的所有内容
+sed "/## 📋 版本历史/,\$d" README.md > README.md.bak
+echo "" >> README.md.bak
+echo "## 📋 版本历史" >> README.md.bak
+echo "" >> README.md.bak
+echo "### [$VERSION]" >> README.md.bak
+echo "" >> README.md.bak
+echo "- ✨ 新增功能和改进" >> README.md.bak
+echo "- 🐛 修复已知问题" >> README.md.bak
+echo "- 📚 更新文档" >> README.md.bak
+echo "" >> README.md.bak
+echo "详细更改请查看 [GitHub提交历史](https://github.com/vanabel/mathbeamer/commits/main)" >> README.md.bak
 mv README.md.bak README.md
-sed "s/### \[$VERSION\] (In Development)/### [$VERSION]/g" README_EN.md > README_EN.md.bak
+
+# 移除README_EN.md中的changelog部分
+echo "  - 移除README_EN.md中的changelog部分..."
+# 删除从版本历史开始到文件末尾的所有内容，完全移除版本历史部分
+sed "/## 📋 Version History/,\$d" README_EN.md > README_EN.md.bak
 mv README_EN.md.bak README_EN.md
 
 echo "版本信息更新完成！"

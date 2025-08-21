@@ -115,79 +115,13 @@
 
 ## 📋 版本历史
 
-### [v2.2.4] (开发中)
+### [$VERSION]
 
-- ✨ 新增 `biblatex` 选项，支持现代参考文献处理
-- ✨ 新增多种引用样式选项
-- 🔄 保持对传统 `amsrefs` 的向后兼容性
-- ⚡ 优化参考文献配置和引用格式
+- ✨ 新增功能和改进
+- 🐛 修复已知问题
+- 📚 更新文档
 
-### [v2.2.3]
-
-- ✨ 新增 `nobib` 选项
-- 🧹 移除多余的参考文献导航
-- 🔤 重新设置中文字体，支持Mac和Windows系统
-- 🎨 重新配置模板标题/正文字体
-
-### [v2.2.2]
-
-- ✨ 新增中文自定义字体命令
-
-### [v2.2.1]
-
-- 🐛 修复 `\CJKunderwave` 兼容性问题
-
-### [v2.2.0]
-
-- ✨ 新增 `subnav` 选项：在每个子节显示导航
-- 📖 添加解决 `allowframebreaks` 和 `itemize` 环境冲突的示例
-- 🗑️ 移除"Thanks!"页面，应由演示总结替代
-
-### [v2.1.0]
-
-- 🏫 新增SJTU标志支持
-- ✨ 为SJTU添加 `domc` 选项
-
-### [v2.0.1]
-
-- 📚 新增用户FAQ
-- 🌏 根据 `zh` 或 `en` 模式修改最后一帧的感谢内容
-
-### [v2.0.0]
-
-- 🔧 使用dtx管理文档
-- 🗑️ 移除xeCJK字体设置（应由用户自行配置）
-
-### [v1.2.0]
-
-- 🌏 新增中文支持选项，使用 `zh` 启用中文支持
-- 🎨 新增默认颜色主题，更接近USTC颜色（主色调为蓝色）
-
-### [v 1.1.1]
-
-1. add more example slides, which includes
- * auto pause in lists
- * two columns in a frame
- * include figure/subfigures in a frame
- * table
- * definition/example/theorem like environments
- * custom defn/examp/thm theorem like environments
- * hyperlinks between slides
-2. add thanks before the references
-3. user defined commands/environments should be written in `slides/usrdefn.tex`
-
-#### [v 1.1.0]
-
-1. new branch, add three color style:
- * `dark`: dark color style
- * `light`: light color style
- * the default is betwen the above two
-
-#### [v 1.0.1]
-
-1. add link to `slides/bib.bib`, so that you can open it in `WinEdt` by `Build Tree`
-2. set the default font theme for math be `\usefonttheme{professionalfonts}`, which makes math formula looks more perfect
-3. add `\newcommand{}{}` example and `\newtheorem{}{}` example
+详细更改请查看 [GitHub提交历史](https://github.com/vanabel/mathbeamer/commits/main)
 
 ### Copyright and Licence
 

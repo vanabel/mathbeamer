@@ -1,7 +1,7 @@
 # ustcmb --- Mathematical Report Template
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-v2.2.6-green.svg)](https://github.com/vanabel/mathbeamer)
+[![Version](https://img.shields.io/badge/Version-2.2.7-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
@@ -36,6 +36,7 @@
 - 🌏 Complete bilingual support for Chinese and English
 - 📚 Flexible bibliography processing (supports amsrefs and biblatex)
 - 🔄 amsrefs syntax compatibility layer (supports `\cite{xxx}*{yyy}` syntax in biblatex mode)
+- ✅ Migrated to ctex package for automatic Chinese font handling
 - 🎯 Rich theorem environment configuration options
 - 🖨️ Optimized print mode support
 - 📱 Responsive layout design
@@ -44,7 +45,7 @@
 
 ### Download and Install
 
-1. Download the template package: [ustcmb-v2.2.4.zip](https://github.com/vanabel/mathbeamer/releases/latest)
+1. Download the template package: [ustcmb-v2.2.7.zip](https://github.com/vanabel/mathbeamer/releases/latest)
 2. After extraction, read the example file `ustcmb-main.pdf`
 3. Refer to `ustcmb-main.tex` to start writing your report
 
@@ -133,82 +134,7 @@ The template supports custom Chinese fonts:
 \setCJKsansfont{YourChineseSansFont}
 ```
 
-## 📋 Version History
-
-### [v2.2.4]
-
-- ✨ Added `biblatex` option, supporting modern bibliography processing
-- ✨ Added multiple citation style options
-- 🔄 Maintained backward compatibility with traditional `amsrefs`
-- 🔄 Added amsrefs syntax compatibility layer, supporting `\cite{xxx}*{yyy}` syntax in biblatex mode
-- ⚡ Optimized bibliography configuration and citation format
-
-### [v2.2.3]
-
-- ✨ Added `nobib` option
-- 🧹 Removed redundant bibliography navigation
-- 🔤 Reset Chinese fonts to support both Mac and Windows systems
-- 🎨 Reconfigured template title/body fonts
-
-### [v2.2.2]
-
-- ✨ Added Chinese custom font commands
-
-### [v2.2.1]
-
-- 🐛 Fixed `\CJKunderwave` compatibility issue
-
-### [v2.2.0]
-
-- ✨ Added `subnav` option: display navigation at each subsection
-- 📖 Added example for resolving conflicts between `allowframebreaks` and `itemize` environment
-- 🗑️ Removed "Thanks!" page, should be replaced by presentation summary
-
-### [v2.1.0]
-
-- 🏫 Added SJTU logo support
-- ✨ Added `domc` option for SJTU
-
-### [v2.0.1]
-
-- 📚 Added user FAQ
-- 🌏 Modified thanks at last frame based on `zh` or `en` mode
-
-### [v2.0.0]
-
-- 🔧 Used dtx to manage documentation
-- ✅ Migrated to ctex package for automatic Chinese font handling
-
-### [v1.2.0]
-
-- 🌏 Added Chinese support option, use `zh` to enable Chinese support
-- 🎨 Added default color theme, more like USTC colors (blue as main color)
-
-### [v1.1.1]
-
-1. Added more example slides, including:
-   * Auto pause in lists
-   * Two columns in a frame
-   * Include figure/subfigures in a frame
-   * Table
-   * Definition/example/theorem-like environments
-   * Custom defn/examp/thm theorem-like environments
-   * Hyperlinks between slides
-2. Added thanks before references
-3. User-defined commands/environments should be written in `slides/usrdefn.tex`
-
-#### [v1.1.0]
-
-1. New branch, added three color styles:
-   * `dark`: dark color style
-   * `light`: light color style
-   * The default is between the above two
-
-#### [v1.0.1]
-
-1. Added link to `slides/bib.bib`, so you can open it in `WinEdt` using `Build Tree`
-2. Set default font theme for math to `\usefonttheme{professionalfonts}`, making math formulas look more perfect
-3. Added `\newcommand{}{}` example and `\newtheorem{}{}` example
+> 💡 **Developer Notes**: For GitHub Actions automatic release process, see [`.github/GITHUB_ACTIONS.md`](.github/GITHUB_ACTIONS.md)
 
 ## 🤝 Contributing
 
