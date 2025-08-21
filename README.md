@@ -100,6 +100,8 @@
 
 项目包含多个示例文件，帮助您快速上手：
 
+> 💡 **开发者说明**: 如果您需要了解GitHub Actions自动发布流程，请查看 [GitHub Actions说明文档](.github/GITHUB_ACTIONS.md)
+
 - `ustcmb-main.tex` - 主要示例文件
 - `biblatex-example.tex` - biblatex使用示例
 - `amsrefs-example.tex` - amsrefs使用示例
