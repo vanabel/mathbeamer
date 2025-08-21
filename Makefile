@@ -6,7 +6,7 @@
 .PHONY : main cls doc clean all inst install distclean zip git dev-help check-version pre-release test FORCE_MAKE
 
 NAME = ustcmb
-VER= v2.2.5
+VER= v2.2.6
 THEME = beamercolorthemeustc.sty
 UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 LOCAL = $(shell kpsewhich --var-value TEXMFLOCAL)
