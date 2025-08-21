@@ -135,8 +135,8 @@ zip : pre-release
 	@cp -r logo/{univ,institute}_logo.png logo/ustc logo/sjtu $(NAME)-$(VER)/logo/
 	@# 复制图片文件
 	@cp -r figs/winfonts.png $(NAME)-$(VER)/figs/
-	@# 创建zip包
-	@zip -r $(NAME)-$(VER).zip $(NAME)-$(VER)/
+	@# 创建zip包（进入目录避免重复路径）
+	@cd $(NAME)-$(VER) && zip -r ../$(NAME)-$(VER).zip . && cd ..
 	@# 清理临时目录
 	@rm -rf $(NAME)-$(VER)/
 	@echo "发布包创建完成: $(NAME)-$(VER).zip"

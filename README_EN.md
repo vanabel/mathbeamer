@@ -35,6 +35,7 @@
 - 🎨 Modern design based on USTC school theme
 - 🌏 Complete bilingual support for Chinese and English
 - 📚 Flexible bibliography processing (supports amsrefs and biblatex)
+- 🔄 amsrefs syntax compatibility layer (supports `\cite{xxx}*{yyy}` syntax in biblatex mode)
 - 🎯 Rich theorem environment configuration options
 - 🖨️ Optimized print mode support
 - 📱 Responsive layout design
@@ -139,6 +140,7 @@ The template supports custom Chinese fonts:
 - ✨ Added `biblatex` option, supporting modern bibliography processing
 - ✨ Added multiple citation style options
 - 🔄 Maintained backward compatibility with traditional `amsrefs`
+- 🔄 Added amsrefs syntax compatibility layer, supporting `\cite{xxx}*{yyy}` syntax in biblatex mode
 - ⚡ Optimized bibliography configuration and citation format
 
 ### [v2.2.3]

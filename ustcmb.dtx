@@ -894,6 +894,8 @@ CTEX.ORG.
 %    \begin{macrocode}
 \ifMB@biblatex
   % 使用现代biblatex包
+  % 加载必要的包以支持amsrefs兼容层
+  \RequirePackage{etoolbox}
   \ifMB@citemath
     \RequirePackage[backend=biber,style=authoryear,citestyle=authoryear,url=false,doi=false,isbn=false]{biblatex}
   \else
@@ -1014,6 +1016,38 @@ CTEX.ORG.
   
   % 自动添加参考文献资源文件
   \AtEndOfClass{\addbibresource{\jobname.bib}}
+  
+  % 为biblatex模式添加amsrefs兼容层
+  % 让 \cite{xxx}*{yyy} 语法在biblatex下也能工作
+  \DeclareCiteCommand{\cite}[\mkbibparens]%
+    {\usebibmacro{prenote}}%
+    {\usebibmacro{citeindex}%
+     \usebibmacro{cite}}%
+    {\multicitedelim}%
+    {\usebibmacro{postnote}}
+  
+  % 定义兼容的 \cite* 命令，支持注释参数
+  \DeclareCiteCommand{\cite*}[\mkbibparens]%
+    {\usebibmacro{prenote}}%
+    {\usebibmacro{citeindex}%
+     \usebibmacro{cite}}%
+    {\multicitedelim}%
+    {\usebibmacro{postnote}}
+  
+  % 重定义 \cite 命令以支持注释参数
+  \let\MB@oldcite\cite
+  \renewcommand{\cite}[2][]{%
+    \ifstrequal{#1}{}%
+      {\MB@oldcite{#2}}%
+      {\MB@oldcite[#1]{#2}}%
+  }
+  
+  % 定义 \cite* 命令以支持注释参数（amsrefs兼容）
+  \newcommand{\cite*}[2][]{%
+    \ifstrequal{#1}{}%
+      {\MB@oldcite{#2}}%
+      {\MB@oldcite[#1]{#2}}%
+  }
 \fi
 
 % 为 amsrefs 模式定义兼容性命令
@@ -1189,23 +1223,27 @@ CTEX.ORG.
 %    \begin{macrocode}
 %<*main>%
 %% !Mode:: "TeX:UTF-8"
-\documentclass[11pt, thmnum, subnav, eqsecnum, allcites, zh, logo]{ustcmb}
+\documentclass[11pt, biblatex, citemath, thmnum, subnav, eqsecnum, allcites, zh, logo]{ustcmb}
 %%%%%%%%%%%%%
 %% Options %%
 %%%%%%%%%%%%%
-%% zh: support chinese
-%% thmnum: numbered theorems
-%% subnav: add navagation at the beginning of each subsection
-%% eqsecnum: number equaiton with section
-%% authoryear: author-year style reference
-%% allcites: output all the reference in \jobname.bib
-%% logo: use the logo at the top of title page
-%%       Please replace your university logo
-%%       and institute logo under ./logo/
-%% nds: not use the default setting
-%% print: print the manuscript
-%% t: make all frame align at top
-%% aspectratio=169: use 16:9 ratio instead of 4:3
+%% 核心选项 (Core Options)
+%% zh: 中文支持，启用中文字体和排版
+%% thmnum: 定理环境带编号，便于引用
+%% subnav: 在每个子节开始显示导航条
+%% eqsecnum: 公式编号包含节号，格式为 (节号.公式号)
+%% logo: 在标题页顶部显示logo，请替换./logo/下的大学和学院logo
+
+%% 参考文献选项 (Bibliography Options)
+%% biblatex: 使用现代biblatex包替代传统bibtex，提供更灵活的参考文献管理
+%% citemath: 数学论文专用引用样式，格式为 "Author, Year'" (如 "J. Sacks-K. Uhlenbeck, 81'")
+%% allcites: 输出\jobname.bib中的所有参考文献条目
+
+%% 高级选项 (Advanced Options)
+%% nds: 不使用默认设置，完全自定义
+%% print: 打印优化模式，调整颜色和布局
+%% t: 所有幻灯片内容顶部对齐
+%% aspectratio=169: 使用16:9宽屏比例替代默认4:3比例
 %% 设置默认分页样式
   \setbeamertemplate{frametitle continuation}[from second][(续)]
 %% 改变默认主题
