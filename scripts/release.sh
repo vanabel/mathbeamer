@@ -53,7 +53,7 @@ rm Makefile.bak
 # 更新DTX文件中的版本号
 echo "  - 更新DTX文件中的版本号..."
 sed -i.bak "s/v[0-9]\+\.[0-9]\+\.[0-9]\+/$VERSION/g" ustcmb.dtx
-rm ustcmb.bak
+rm ustcmb.dtx.bak
 
 # 更新README.md中的版本号
 echo "  - 更新README.md中的版本号..."
