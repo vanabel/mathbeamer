@@ -2,7 +2,7 @@
 # ustcmb --- Mathematical Report Template
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-v2.2.8-green.svg)](https://github.com/vanabel/mathbeamer)
+[![Version](https://img.shields.io/badge/Version-v2.2.9-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
@@ -46,7 +46,7 @@
 
 ### Download and Install
 
-1. Download the template package: [ustcmb-v2.2.8.zip](https://github.com/vanabel/mathbeamer/releases/latest)
+1. Download the template package: [ustcmb-v2.2.9.zip](https://github.com/vanabel/mathbeamer/releases/latest)
 2. After extraction, read the example file `ustcmb-main.pdf`
 3. Refer to `ustcmb-main.tex` to start writing your report
 
@@ -97,6 +97,9 @@ Content...
 | `nds`    | Do not use default settings (requires manual configuration) |
 | `subnav` | Display navigation at each subsection                       |
 | `nobib`  | Disable bibliography processing                             |
+| `timer`  | Footline countdown (Adobe Acrobat/Reader)                   |
+
+Default duration is 50 minutes; set `\talkduration{45}` in the preamble. Live ticking requires Adobe Acrobat / Acrobat Reader.
 
 ## 📚 Example Files
 

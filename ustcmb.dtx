@@ -102,6 +102,7 @@
 | `nds` | 不使用默认设置（需要手动配置） |
 | `subnav` | 在每个子节显示导航 |
 | `nobib` | 禁用参考文献处理 |
+| `timer` | 脚注栏倒计时（需 Adobe Acrobat/Reader） |
 
 ## 📚 示例文件
 
@@ -195,7 +196,7 @@ version 2005/12/01 or later.
     模板名称: ustcmb 
         描述: 中科大数学报告模板
     模板网址: https://github.com/vanabel/mathbeamer
-      版本号: v2.2.8
+      版本号: v2.2.9
         作者: Van Abel
       E-mail: van141.abel@gmail.com
      License: LaTeX Project Public License v1.3c or later
@@ -287,7 +288,7 @@ and the derived files:
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{ustcmb}
 %<*class>
-[2025/08/21 v2.2.8 中科大数学报告模板类文件]
+[2026/09/02 v2.2.9 中科大数学报告模板类文件]
 %</class>
 %
 %<*driver>
@@ -380,6 +381,9 @@ CTEX.ORG.
 %   Right bracket \]     Circumflex    \^     Underscore    \_
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
+% \changes{v2.2.9}{2026/09/02}{新增\opt{timer}选项：脚注栏倒计时（XeLaTeX + Acrobat 表单）}
+% \changes{v2.2.9}{2026/09/02}{新增\shellcmd{\talkduration}设置倒计时分钟数，配色跟随 date in head/foot}
+% \changes{v2.2.9}{2026/09/02}{修复自动封面页时 \cs{Hy@colorlink} 未定义}
 % \changes{v2.2.4}{2025/08/21}{新增\opt{biblatex}选项，支持现代参考文献处理}
 % \changes{v2.2.4}{2025/08/21}{新增\opt{citemath}选项，支持数学论文专用引用样式}
 % \changes{v2.2.4}{2025/08/21}{保持对传统\pkg{amsrefs}的向后兼容性}
@@ -488,6 +492,8 @@ CTEX.ORG.
 %     \opt{nobib} & 不列出参考文献\\
 %     \hline
 %     \opt{print} & 打印模式\\
+%     \hline
+%     \opt{timer} & 脚注栏倒计时（需 Adobe Acrobat/Reader）\\
 %     \hline
 %   \end{tabular}
 % \end{table}
@@ -645,6 +651,18 @@ CTEX.ORG.
 %     \end{onlyenv}
 %   \end{frame} 
 % \end{latex}
+% \subsection{计时器}
+% 使用 \opt{timer} 在 CambridgeUS / infolines 脚注栏右侧放入倒计时.
+% 默认 50 分钟, 可用 \shellcmd{\talkduration} 修改.
+% 前景/背景色取自 \texttt{date in head/foot}, 改主题配色后重新编译即可匹配.
+% 实时跳秒需要 Adobe Acrobat 或 Acrobat Reader; Preview、Skim、Chrome 通常只显示初始值.
+% \begin{latex}
+%   \documentclass[zh, timer]{ustcmb}
+%   \talkduration{50}
+%   \date{August 31, 2026}
+% \end{latex}
+% 封面仍显示 \shellcmd{\date} 的长日期; 脚注栏短日期替换为倒计时.
+% 打印模式 \opt{print} 下自动关闭计时器.
 % \subsection{打印模式}
 % 本模板提供了方便打印slide的模式 \opt{print}, 使用该模式会作如下改变
 % \begin{itemize}
@@ -690,6 +708,12 @@ CTEX.ORG.
     %ocgcolorlinks,
     %pdfusetitle
   }
+  % Beamer loads hyperref without colorlinks. \hypersetup{colorlinks}
+  % here does not define \Hy@colorlink before the auto titlepage:
+  % hyperref's own begin-document hook is queued after hooks already
+  % registered by this class.
+  \providecommand{\Hy@colorlink}[1]{\begingroup\color{#1}}
+  \providecommand{\Hy@endcolorlink}{\endgroup}
 }
 %    \end{macrocode}
 % \subsection{选项申明}
@@ -759,14 +783,20 @@ CTEX.ORG.
 \DeclareOption{logo}{\MB@logotrue}
 \newif\ifMB@logo\MB@logofalse
 %    \end{macrocode}
+% \opt{timer}选项: 脚注栏倒计时
+%    \begin{macrocode}
+\newif\ifMB@timer\MB@timerfalse
+\DeclareOption{timer}{\MB@timertrue}
+%    \end{macrocode}
 % 传递参数
 %    \begin{macrocode}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
 \ProcessOptions\relax
+\iftoggle{print}{\MB@timerfalse}{}
 %    \end{macrocode}
 % 提供标准的类声明
 %    \begin{macrocode}
-\ProvidesClass{ustcmb}[2025/08/21 v2.2.8 USTC Math Beamer Template]
+\ProvidesClass{ustcmb}[2026/09/02 v2.2.9 USTC Math Beamer Template]
 %    \end{macrocode}
 % \subsection{基于模式加载文档类}
 % 如果是打印(\opt{print})模式
@@ -1139,6 +1169,77 @@ CTEX.ORG.
     \setcounter{framenumber}{\value{ffn}}
     }
   \fi
+%    \end{macrocode}
+% \opt{timer}选项实现: hyperref 表单 + xdvipdfmx 页面打开脚本.
+% 配色取自 \texttt{date in head/foot}; 高度对齐 infolines 脚注栏.
+%    \begin{macrocode}
+\ifMB@timer
+\def\MB@timerminutes{50}
+\newcommand{\talkduration}[1]{\def\MB@timerminutes{#1}}
+\def\MB@rgbspaces#1,#2,#3\relax{#1 #2 #3}
+\newcommand{\timemark}{%
+  \begingroup
+    \usebeamercolor{date in head/foot}%
+    \extractcolorspecs{fg}{\MB@mdl}{\MB@spc}%
+    \expandafter\convertcolorspec\expandafter{\MB@mdl}{\MB@spc}{rgb}{\MB@fgrgb}%
+    \extractcolorspecs{bg}{\MB@mdl}{\MB@spc}%
+    \expandafter\convertcolorspec\expandafter{\MB@mdl}{\MB@spc}{rgb}{\MB@bgrgb}%
+    \edef\MB@fg{\expandafter\MB@rgbspaces\MB@fgrgb\relax}%
+    \edef\MB@bg{\expandafter\MB@rgbspaces\MB@bgrgb\relax}%
+    \raisebox{-1ex}[2.25ex][1ex]{%
+      \edef\MB@field{%
+        \noexpand\TextField[%
+          name=datetime,
+          width=1.15cm,
+          height=\the\dimexpr 2.25ex+1ex\relax,
+          charsize=\f@size pt,
+          maxlen=8,
+          readonly=true,
+          value=\MB@timerminutes:00,
+          align=1,
+          borderwidth=0,
+          bordercolor={\MB@bg},
+          backgroundcolor={\MB@bg},
+          color={\MB@fg}%
+        ]{}%
+      }%
+      \MB@field
+    }%
+  \endgroup
+}
+\AddToHook{begindocument/before}{\Form}
+\AddToHook{enddocument}{\endForm}
+\AddToHook{shipout/before}{\MB@puttimerspecial}
+\AtBeginDocument{%
+  \let\MB@saveddate\insertdate
+  \date[\timemark]{\MB@saveddate}%
+}
+\ExplSyntaxOn
+\cs_new_protected:cpn { MB@puttimerspecial }
+  {
+    \str_set:Nx \l_tmpa_str
+      {
+        \tl_to_str:n { if~(typeof~this.mbTalkTimer==='undefined'){this.mbTalkTimer=true;this.mbSeconds=MINUTES*60;this.mbTick=app.setInterval('try{var~s=this.mbSeconds;if~(s>0){s--;}this.mbSeconds=s;var~m=Math.floor(s/60);var~r=s-m*60;var~f=this.getField("datetime");if~(f){f.value=m+":"+(r<10?"0":"")+r;}}catch(e){}',1000);} }
+      }
+    \tl_set:Nx \l_tmpa_tl { \use:c { MB@timerminutes } }
+    \exp_args:NNnV \str_replace_all:Nnn \l_tmpa_str { MINUTES } \l_tmpa_tl
+    \str_clear:N \l_tmpb_str
+    \str_map_inline:Nn \l_tmpa_str
+      {
+        \int_set:Nn \l_tmpa_int { `##1 }
+        \str_put_right:Nx \l_tmpb_str
+          {
+            \int_compare:nNnT { \l_tmpa_int } < { 16 } { 0 }
+            \int_to_Hex:n { \l_tmpa_int }
+          }
+      }
+    \exp_args:Ne \special
+      {
+        pdf:put~@thispage~<<~/AA~<<~/O~<<~/S~/JavaScript~/JS~<\l_tmpb_str>~>>~>>~>>
+      }
+  }
+\ExplSyntaxOff
+\fi
 %</class>
 %    \end{macrocode}
 % \section{示例文档源码}
@@ -1164,6 +1265,7 @@ CTEX.ORG.
 %% 高级选项 (Advanced Options)
 %% nds: 不使用默认设置，完全自定义
 %% print: 打印优化模式，调整颜色和布局
+%% timer: 脚注栏倒计时（Adobe Acrobat/Reader）；\talkduration{50} 设置分钟数
 %% t: 所有幻灯片内容顶部对齐
 %% aspectratio=169: 使用16:9宽屏比例替代默认4:3比例
 %% 设置默认分页样式
@@ -1270,6 +1372,8 @@ CTEX.ORG.
       nobib & 不列出参考文献\\
       \hline
       print & 打印模式\\
+      \hline
+      timer & 脚注栏倒计时（Acrobat）\\
       \hline
     \end{tabular}
   \end{table}

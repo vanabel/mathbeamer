@@ -2,7 +2,7 @@
 # ustcmb --- 数学类报告模板
 
 [![License](https://img.shields.io/badge/License-LPPL%20v1.3c-blue.svg)](http://www.latex-project.org/lppl.txt)
-[![Version](https://img.shields.io/badge/Version-v2.2.8-green.svg)](https://github.com/vanabel/mathbeamer)
+[![Version](https://img.shields.io/badge/Version-v2.2.9-green.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-orange.svg)](https://www.ctan.org/pkg/beamer)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)](https://github.com/vanabel/mathbeamer)
 [![LaTeX Version](https://img.shields.io/badge/LaTeX%20Version-2005%2F12%2F01%2B-blue.svg)](https://www.latex-project.org/)
@@ -46,7 +46,7 @@
 
 ### 下载安装
 
-1. 下载模板压缩包：[ustcmb-v2.2.8.zip](https://github.com/vanabel/mathbeamer/releases/latest)
+1. 下载模板压缩包：[ustcmb-v2.2.9.zip](https://github.com/vanabel/mathbeamer/releases/latest)
 2. 解压后阅读示例文件 `ustcmb-main.pdf`
 3. 参考 `ustcmb-main.tex` 开始编写您的报告
 
@@ -97,6 +97,9 @@
 | `nds`    | 不使用默认设置（需要手动配置） |
 | `subnav` | 在每个子节显示导航       |
 | `nobib`  | 禁用参考文献处理        |
+| `timer`  | 脚注栏倒计时（Acrobat） |
+
+时长默认 50 分钟，可在导言区写 `\talkduration{45}`。实时跳秒需要 Adobe Acrobat / Acrobat Reader。
 
 ## 📚 示例文件
 
