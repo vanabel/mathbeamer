@@ -156,3 +156,12 @@ This project is licensed under [LaTeX Project Public License v1.3c](http://www.l
 **If this template helps you, please give it a ⭐️ star!**
 
 </div>
+
+## 📋 Version History
+
+### [v2.2.9]
+
+- Added the `timer` option and `\talkduration` for an Acrobat footline countdown
+- Fixed undefined `\Hy@colorlink` on the automatic title page
+
+See the [GitHub commit history](https://github.com/vanabel/mathbeamer/commits/main) for details.

@@ -154,13 +154,9 @@ release:
 	sed "s/VER= v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/VER= $(VERSION)/" Makefile > Makefile.bak; \
 	mv Makefile.bak Makefile; \
 	echo "  - 更新DTX文件中的版本号..."; \
-	sed "s/\\ProvidesClass{$(NAME)}\\[.*v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/\\ProvidesClass{$(NAME)}[$(shell date +%Y\/%m\/%d) $(VERSION)/g" $(NAME).dtx > $(NAME).dtx.bak; \
-	mv $(NAME).dtx.bak $(NAME).dtx; \
-	echo "  - 更新DTX文件中的其他版本号位置..."; \
-	sed "s/版本号: v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/版本号: $(VERSION)/g" $(NAME).dtx > $(NAME).dtx.bak; \
-	mv $(NAME).dtx.bak $(NAME).dtx; \
-	sed "s/\[[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9] v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]* 中科大数学报告模板类文件\]/\[$(shell date +%Y\/%m\/%d) $(VERSION) 中科大数学报告模板类文件\]/g" $(NAME).dtx > $(NAME).dtx.bak; \
-	mv $(NAME).dtx.bak $(NAME).dtx; \
+	python3 scripts/update-dtx-version.py "$(NAME)" "$(VERSION)" "$$(date +%Y/%m/%d)";
+	@VERSION_NUM=$$(echo $(VERSION) | sed 's/^v//'); \
+	test -s $(NAME).dtx || (echo "错误: DTX 版本替换把文件写空了" && exit 1); \
 	echo "  - 更新README.md中的版本号..."; \
 	sed "s/Version-v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*/Version-$$VERSION_NUM/g" README.md > README.md.bak; \
 	mv README.md.bak README.md; \
@@ -201,7 +197,7 @@ release:
 	fi; \
 	echo "发布包创建成功: $$ZIP_FILE"; \
 	echo "提交版本更新和发布包..."; \
-	git add Makefile $(NAME).dtx README.md README_EN.md "ustcmb-$(VERSION).zip"; \
+	git add Makefile $(NAME).dtx README.md README_EN.md scripts/update-dtx-version.py "ustcmb-$(VERSION).zip"; \
 	git commit -m "发布版本 $(VERSION)"; \
 	echo ""; \
 	echo "发布流程完成！"; \

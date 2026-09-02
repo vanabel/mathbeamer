@@ -156,3 +156,12 @@
 **如果该模板对您有帮助，请给它一个 ⭐️ Star！**
 
 </div>
+
+## 📋 版本历史
+
+### [v2.2.9]
+
+- ✨ 新增 `timer` 选项与 `\talkduration`：脚注栏 Acrobat 倒计时
+- 🐛 修复自动封面页时 `\Hy@colorlink` 未定义，biblatex 等示例可编译
+
+详细更改请查看 [GitHub提交历史](https://github.com/vanabel/mathbeamer/commits/main)

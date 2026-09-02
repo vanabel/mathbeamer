@@ -382,7 +382,7 @@ CTEX.ORG.
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 % \changes{v2.2.9}{2026/09/02}{新增\opt{timer}选项：脚注栏倒计时（XeLaTeX + Acrobat 表单）}
-% \changes{v2.2.9}{2026/09/02}{新增\shellcmd{\talkduration}设置倒计时分钟数，配色跟随 date in head/foot}
+% \changes{v2.2.9}{2026/09/02}{新增\cs{talkduration}设置倒计时分钟数，配色跟随 date in head/foot}
 % \changes{v2.2.9}{2026/09/02}{修复自动封面页时 \cs{Hy@colorlink} 未定义}
 % \changes{v2.2.4}{2025/08/21}{新增\opt{biblatex}选项，支持现代参考文献处理}
 % \changes{v2.2.4}{2025/08/21}{新增\opt{citemath}选项，支持数学论文专用引用样式}
@@ -653,7 +653,7 @@ CTEX.ORG.
 % \end{latex}
 % \subsection{计时器}
 % 使用 \opt{timer} 在 CambridgeUS / infolines 脚注栏右侧放入倒计时.
-% 默认 50 分钟, 可用 \shellcmd{\talkduration} 修改.
+% 默认 50 分钟, 可用 \cs{talkduration} 修改.
 % 前景/背景色取自 \texttt{date in head/foot}, 改主题配色后重新编译即可匹配.
 % 实时跳秒需要 Adobe Acrobat 或 Acrobat Reader; Preview、Skim、Chrome 通常只显示初始值.
 % \begin{latex}
